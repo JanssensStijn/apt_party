@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
@@ -8,6 +10,9 @@
 <h1>
     Welcome to the home
 </h1>
-Dit is mijn eerste webapp via Spring
+    <p> Dit is mijn eerste webapp via Spring <br><br>
+    5x12=</p>
+    <p th:text="${myCalculatedValue}"></p>
+
 </body>
 </html>

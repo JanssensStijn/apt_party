@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <meta charset="UTF-8">
     <title>About</title>
 </head>
 <body>
 <h1>About</h1>
-This is the about file
+<p>
+    This is the about file
+</p>
+<ol>
+    <li th:text="${myName}"></li>
+    <li th:text="${myStreet}"></li>
+    <li th:text="${myCity}"></li>
+</ol>
 </body>
 </html>

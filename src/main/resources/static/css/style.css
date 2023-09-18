@@ -1,0 +1,12 @@
+html{
+    background-color: antiquewhite;
+    font-family: "Arial Black";
+}
+h1{
+    font-size: x-large;
+    color: dodgerblue;
+}
+p, ol,li {
+    font-size: small;
+    color: darkblue;
+}
