@@ -6,7 +6,7 @@ h1{
     font-size: x-large;
     color: dodgerblue;
 }
-p, ol,li {
+p, ol li {
     font-size: small;
     color: darkblue;
 }
