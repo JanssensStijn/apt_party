@@ -10,7 +10,9 @@ public class HomeController {
     @GetMapping({"/", "/home"})
     public String home(Model model) {
         int myCalculatedValue = 5 * 12;
+        String appName = "Mediatheek";
         model.addAttribute("myCalculatedValue", myCalculatedValue);
+        model.addAttribute("appName",appName);
         return "home";
     }
 
