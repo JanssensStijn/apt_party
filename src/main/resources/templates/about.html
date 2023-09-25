@@ -7,6 +7,16 @@
     <title>About</title>
 </head>
 <body>
+<navbar>
+    <!-- <h1 th:text="${appName} +' --- '+ ${appName}">appName</h1> -->
+    <h1 th:text="${appName}">appName</h1>
+    <ul>
+        <li><a th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/about}">about</a></li>
+        <li><a th:href="@{/pay}">pay</a></li>
+        <li><a th:href="@{/venuedetails}">venue</a></li>
+    </ul>
+</navbar>
 <h1>About</h1>
 <p>
     This is the about file

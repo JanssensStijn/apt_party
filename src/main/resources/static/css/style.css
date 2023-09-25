@@ -1,7 +1,19 @@
 html{
-    background-color: antiquewhite;
     font-family: "Arial Black";
 }
+navbar{
+    background-color: black;
+}
+
+navbar h1 {
+        font-size: xx-large;
+        color: white;
+    background-color: black;
+    }
+navbar li{
+    display: inline;
+}
+
 h1{
     font-size: x-large;
     color: dodgerblue;
