@@ -11,6 +11,8 @@ import java.util.Optional;
 
 @Controller
 public class VenueController {
+
+    String appName = "Party";
     @Autowired
     private VenueRepository venueRepository;
 
@@ -28,6 +30,7 @@ public class VenueController {
         myVenue.setDistanceFromPublicTransportInKm(1);
         model.addAttribute("Venue", myVenue);*/
 
+        model.addAttribute("appName", appName);
         Optional<Venue> venueFromDb = venueRepository.findById(1);
         if (venueFromDb.isPresent()) model.addAttribute("venue", venueFromDb.get());
         return "venuedetails";

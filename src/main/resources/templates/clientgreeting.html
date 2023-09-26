@@ -4,7 +4,7 @@
 <head>
   <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
   <meta charset="UTF-8">
-  <title>pay</title>
+  <title>clientgreeting</title>
 </head>
 <body>
 <navbar>
@@ -19,8 +19,7 @@
   </ul>
 </navbar>
 
-<p th:text="|de huidige datum = ${dateNow}|">date</p>
-<p th:text="|de maximale datum om te betalen = ${dateMax}|">date</p>
+<p th:text="|${greeting} allerliefste ${client.getName()}, jij bent een topper!|">greetings</p>
 
 </body>
 </html>
