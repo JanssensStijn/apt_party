@@ -16,14 +16,14 @@
   </ul>
 </navbar>
 
-<p th:text="${myVenue.getVenueName()}"></p>
-<p >link: </p> <a th:href="${myVenue.getLinkMoreInfo()}" th:text="${myVenue.getLinkMoreInfo()}"></a>
-<p >Capacity: </p> <p th:text="${myVenue.getCapacity()}"></p>
-<p >food provided: </p> <p th:text="${myVenue.isFoodProvided() ? 'yes' : 'no'}"></p>
-<p >indoor: </p> <p th:text="${myVenue.isIndoor() ? 'yes' : 'no'}"></p>
-<p >outdoor: </p> <p th:text="${myVenue.isOutdoor() ? 'yes' : 'no'}"></p>
-<p >free parking: </p> <p th:text="${myVenue.isFreeParkingAvailable() ? 'yes' : 'no'}"></p>
-<p >city: </p> <p th:text="${myVenue.getCity()}"></p>
-<p >distance to public transport: </p> <p th:text="|${myVenue.getDistanceFromPublicTransportInKm()} km|"></p>
+<p th:text="${venue.getVenueName()}"></p>
+<p >link: </p> <a th:href="@{${venue.getLinkMoreInfo()}}" th:text="${venue.getLinkMoreInfo()}"></a>
+<p >Capacity: </p> <p th:text="${venue.getCapacity()}"></p>
+<p >food provided: </p> <p th:text="${venue.isFoodProvided() ? 'yes' : 'no'}"></p>
+<p >indoor: </p> <p th:text="${venue.isIndoor() ? 'yes' : 'no'}"></p>
+<p >outdoor: </p> <p th:text="${venue.isOutdoor() ? 'yes' : 'no'}"></p>
+<p >free parking: </p> <p th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}"></p>
+<p >city: </p> <p th:text="${venue.getCity()}"></p>
+<p >distance to public transport: </p> <p th:text="|${venue.getDistanceFromPublicTransportInKm()} km|"></p>
 </body>
 </html>
