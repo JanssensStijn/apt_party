@@ -1,24 +1,10 @@
 html{
+    margin: 30px;
     font-family: "Arial Black";
 }
-navbar{
-    background-color: black;
+.navbar-brand{
+    font-size: xxx-large;
 }
-
-navbar h1 {
-        font-size: xx-large;
-        color: white;
-    background-color: black;
-    }
-navbar li{
-    display: inline;
-}
-
-h1{
+nav a{
     font-size: x-large;
-    color: dodgerblue;
-}
-p, ol li {
-    font-size: small;
-    color: darkblue;
 }

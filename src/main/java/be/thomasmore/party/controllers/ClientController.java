@@ -20,14 +20,18 @@ public class ClientController {
 
     @GetMapping({"/clientgreeting"})
     public String clientdetails(Model model) {
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH");
         LocalDateTime timeNow = LocalDateTime.now();
         int currentHour = Integer.parseInt(timeNow.format(formatter));
+
         String greeting;
         if (currentHour >= 6 && currentHour < 12) greeting = "Goedemorgen";
         else if (currentHour >= 12 && currentHour < 17) greeting = "Goedemiddag";
         else if (currentHour >= 17 && currentHour < 22) greeting = "Goedenavond";
         else  greeting = "Goedennacht";
+
+
 
         model.addAttribute("appName", appName);
         model.addAttribute("greeting", greeting);
