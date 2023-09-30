@@ -1,6 +1,12 @@
 html{
-    margin: 30px;
+    margin: 20px;
     font-family: "Arial Black";
+}
+nav{
+    margin-bottom: 20px;
+}
+.navbar{
+    padding-left: 20px;
 }
 .navbar-brand{
     font-size: xxx-large;
@@ -8,9 +14,18 @@ html{
 .nav-link{
     font-size: x-large;
 }
+.nav-item{
+    margin: 5px 10px;
+    padding: 5px 10px;
+    border: 1px;
+    border-color: grey;
+    border-style: solid;
+    border-radius: 10px;
+}
 .card{
     margin-top: 20px;
 }
+
 .card-img-top{
     height:150px;
 }

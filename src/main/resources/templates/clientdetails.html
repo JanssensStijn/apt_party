@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pay</title>
+  <title>Clientdetails</title>
   <!-- css en js file inladen voor bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -43,8 +43,7 @@
   </div>
 </nav>
 
-<p th:text="|de huidige datum = ${dateNow}|">date</p>
-<p th:text="|de maximale datum om te betalen = ${dateMax}|">date</p>
+<P th:text="${message}"></P>
 
 </body>
 </html>
