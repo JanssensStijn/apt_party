@@ -34,22 +34,22 @@
         <a class="nav-link" th:href="@{/home}">Home </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/about}">about</a>
+        <a class="nav-link" th:href="@{/about}">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/pay}">pay</a>
+        <a class="nav-link" th:href="@{/pay}">Pay</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/venuedetails}">venuedetails</a>
+        <a class="nav-link" th:href="@{/venuedetails}">Venuedetails</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/clientgreeting}">clientgreeting</a>
+        <a class="nav-link" th:href="@{/clientgreeting}">Clientgreeting</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<p th:text="|${greeting} allerliefste ${client.getName()}, jij bent een topper!|">greetings</p>
+<p th:text="|${greetingPart1} ${greetingPart2}${client.getName()}${greetingPart3}|">greetings</p>
 
 </body>
 </html>

@@ -34,28 +34,25 @@
                 <a class="nav-link" th:href="@{/home}">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/about}">about</a>
+                <a class="nav-link" th:href="@{/about}">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/pay}">pay</a>
+                <a class="nav-link" th:href="@{/pay}">Pay</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/venuedetails}">venuedetails</a>
+                <a class="nav-link" th:href="@{/venuedetails}">Venuedetails</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/clientgreeting}">clientgreeting</a>
+                <a class="nav-link" th:href="@{/clientgreeting}">Clientgreeting</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<h1>
-    Welcome to the home
-</h1>
     <p> Dit is mijn eerste webapp via Spring <br><br>
     5x12=</p>
-    <p th:text="${myCalculatedValue}"></p>
-    <p th:text="${5*12}">app</p>
+    <p th:text="|Berekent in java: ${myCalculatedValue}|"></p>
+    <p th:text="|Rechstreeks berekent in html: ${5*12}|">app</p>
 
 <a th:href="@{/about}">klik hier om naar "about" te gaan</a>
 

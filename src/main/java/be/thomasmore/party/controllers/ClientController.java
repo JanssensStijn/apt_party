@@ -25,18 +25,39 @@ public class ClientController {
         LocalDateTime timeNow = LocalDateTime.now();
         int currentHour = Integer.parseInt(timeNow.format(formatter));
 
-        String greeting;
-        if (currentHour >= 6 && currentHour < 12) greeting = "Goedemorgen";
-        else if (currentHour >= 12 && currentHour < 17) greeting = "Goedemiddag";
-        else if (currentHour >= 17 && currentHour < 22) greeting = "Goedenavond";
-        else  greeting = "Goedennacht";
-
-
+        String greetingPart1;
+        if (currentHour >= 6 && currentHour < 12) greetingPart1 = "Goedemorgen";
+        else if (currentHour >= 12 && currentHour < 17) greetingPart1 = "Goedemiddag";
+        else if (currentHour >= 17 && currentHour < 22) greetingPart1 = "Goedenavond";
+        else  greetingPart1 = "Goedennacht";
 
         model.addAttribute("appName", appName);
-        model.addAttribute("greeting", greeting);
+        model.addAttribute("greetingPart1", greetingPart1);
+
         Optional<Client> clientFromDb = clientRepository.findById(1);
-        if (clientFromDb.isPresent()) model.addAttribute("client", clientFromDb.get());
+        if (clientFromDb.isPresent()){
+            String greetingPart2 = "", greetingPart3 = "";
+            if(clientFromDb.get().getNrOfOrders() == 0) {
+                greetingPart2 = "";
+                greetingPart3 = ", en welkom!";
+            }
+            else if(clientFromDb.get().getNrOfOrders() >= 10 && clientFromDb.get().getNrOfOrders() < 50) {
+                greetingPart2 = "beste ";
+                greetingPart3 = "";
+            }
+            else if(clientFromDb.get().getNrOfOrders() >= 50 && clientFromDb.get().getNrOfOrders() < 80) {
+                greetingPart2 = "allerliefste ";
+                greetingPart3 = "";
+            }
+            else if(clientFromDb.get().getNrOfOrders() >= 80) {
+                greetingPart2 = "allerliefste ";
+                greetingPart3 = ", jij bent een topper!";
+            }
+            model.addAttribute("client", clientFromDb.get());
+
+            model.addAttribute("greetingPart2", greetingPart2);
+            model.addAttribute("greetingPart3", greetingPart3);
+        }
         return "clientgreeting";
     }
 }

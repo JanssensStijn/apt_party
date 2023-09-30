@@ -2,61 +2,142 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Venuedetails</title>
-  <!-- jquery js inladen -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <!-- popper js inladen -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-          crossorigin="anonymous"></script>
-  <!-- bootstrap js inladen -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-          crossorigin="anonymous"></script>
-  <!-- bootstrap css inladen -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <!-- eigen css file inladen -->
-  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
+    <meta charset="UTF-8">
+    <title>Venuedetails</title>
+    <!-- jquery js inladen -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- popper js inladen -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <!-- bootstrap js inladen -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!-- bootstrap css inladen -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- eigen css file inladen -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" th:text="${appName}">
-    Navbar
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{/home}">Home </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/about}">about</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/pay}">pay</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/venuedetails}">venuedetails</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/clientgreeting}">clientgreeting</a>
-      </li>
-    </ul>
-  </div>
+    <a class="navbar-brand" th:text="${appName}">
+        Navbar
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/home}">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/about}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/pay}">Pay</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/venuedetails}">Venuedetails</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/clientgreeting}">Clientgreeting</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
-<p th:text="${venue.getVenueName()}"></p>
-<p >link: </p> <a th:href="@{${venue.getLinkMoreInfo()}}" th:text="${venue.getLinkMoreInfo()}"></a>
-<p >Capacity: </p> <p th:text="${venue.getCapacity()}"></p>
-<p >food provided: </p> <p th:text="${venue.isFoodProvided() ? 'yes' : 'no'}"></p>
-<p >indoor: </p> <p th:text="${venue.isIndoor() ? 'yes' : 'no'}"></p>
-<p >outdoor: </p> <p th:text="${venue.isOutdoor() ? 'yes' : 'no'}"></p>
-<p >free parking: </p> <p th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}"></p>
-<p >city: </p> <p th:text="${venue.getCity()}"></p>
-<p >distance to public transport: </p> <p th:text="|${venue.getDistanceFromPublicTransportInKm()} km|"></p>
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top placeholder" src="" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${venue.getVenueName()}">Card title</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        City:
+                    </div>
+                    <div class="col-sm-6" th:text="${venue.getCity()}">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Capacity:
+                    </div>
+                    <div class="col-sm-6" th:text="${venue.getCapacity()}">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Indoor:
+                    </div>
+                    <div class="col-sm-6" th:text="${venue.isIndoor() ? 'yes' : 'no'}">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Outdoor:
+                    </div>
+                    <div class="col-sm-6" th:text="${venue.isOutdoor() ? 'yes' : 'no'}">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        food provided:
+                    </div>
+                    <div class="col-sm-6" th:text="${venue.isFoodProvided() ? 'yes' : 'no'}">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        free parking:
+                    </div>
+                    <div class="col-sm-6" th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        distance to public transport:
+                    </div>
+                    <div class="col-sm-6" th:text="|${venue.getDistanceFromPublicTransportInKm()} km|">
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="card-link" th:href="@{${venue.getLinkMoreInfo()}}" th:text="${venue.getLinkMoreInfo()}">Another
+            link</a>
+    </div>
+</div>
+
 </body>
 </html>

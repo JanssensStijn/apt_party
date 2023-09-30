@@ -34,24 +34,20 @@
                 <a class="nav-link" th:href="@{/home}">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/about}">about</a>
+                <a class="nav-link" th:href="@{/about}">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/pay}">pay</a>
+                <a class="nav-link" th:href="@{/pay}">Pay</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/venuedetails}">venuedetails</a>
+                <a class="nav-link" th:href="@{/venuedetails}">Venuedetails</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/clientgreeting}">clientgreeting</a>
+                <a class="nav-link" th:href="@{/clientgreeting}">Clientgreeting</a>
             </li>
         </ul>
     </div>
 </nav>
-<h1>About</h1>
-<p>
-    This is the about file
-</p>
 
 <ol>
     <li th:text="${myName}"></li>
@@ -60,7 +56,8 @@
 </ol>
 
 <!-- <p th:text="'ik ben ' + ${myName} +' en woon in de'+ ${myStreet} + ',te ' + ${myCity}">appName</p> -->
-<p th:text="|ik ben ${myName} en woon in de ${myStreet}, te ${myCity}|">appName</p> <!--dit is hetzelfde als de regel erboven maar makelijker leesbaar-->
+<p th:text="|ik ben ${myName} en woon in de ${myStreet}, te ${myCity}|">appName</p>
+<!--dit is hetzelfde als de regel erboven maar makelijker leesbaar-->
 
 <a th:href="@{/home}">klik hier om naar "home" te gaan</a>
 </body>

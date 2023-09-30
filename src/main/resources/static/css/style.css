@@ -5,6 +5,12 @@ html{
 .navbar-brand{
     font-size: xxx-large;
 }
-nav a{
+.nav-link{
     font-size: x-large;
+}
+.card{
+    margin-top: 20px;
+}
+.card-img-top{
+    height:150px;
 }
