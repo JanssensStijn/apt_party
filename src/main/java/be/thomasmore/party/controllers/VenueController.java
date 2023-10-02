@@ -18,6 +18,11 @@ public class VenueController {
     @Autowired
     private VenueRepository venueRepository;
 
+    @GetMapping({"/venuelist"})
+    public String venuelist(Model model) {
+        model.addAttribute("appName", appName);
+        return "venuelist";
+    }
     @GetMapping({"/venuedetails/{id}"})
     public String venuedetails(Model model, @PathVariable int id) {
         model.addAttribute("appName", appName);

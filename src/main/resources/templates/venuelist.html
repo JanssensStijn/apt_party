@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Venuedetails</title>
     <!-- css en js file inladen voor bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -43,12 +43,11 @@
     </div>
 </nav>
 
-<p> Dit is mijn eerste webapp via Spring <br><br>
-    5x12=</p>
-<p th:text="|Berekent in java: ${myCalculatedValue}|"></p>
-<p th:text="|Rechstreeks berekent in html: ${5*12}|">app</p>
-
-<a th:href="@{/about}">klik hier om naar "about" te gaan</a>
+<ul>
+    <il><a th:href="@{/venuedetails/1}">Venue 1</a></il>
+    <il><a th:href="@{/venuedetails/2}">Venue 2</a></il>
+    <il><a th:href="@{/venuedetails/3}">Venue 3</a></il>
+</ul>
 
 </body>
 </html>
