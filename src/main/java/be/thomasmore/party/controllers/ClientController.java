@@ -13,14 +13,12 @@ import java.util.Optional;
 
 @Controller
 public class ClientController {
-    String appName = "Party";
 
     @Autowired
     private ClientRepository clientRepository;
 
     @GetMapping({"/clienthome"})
     public String clienthome(Model model) {
-        model.addAttribute("appName", appName);
         Optional<Client> clientFromDb = clientRepository.findById(1);
         final Client client = clientFromDb.get();
         String message = "deze klant kan niet gevonden worden";
@@ -33,7 +31,6 @@ public class ClientController {
 
     @GetMapping({"/clientdetails"})
     public String clientdetails(Model model) {
-        model.addAttribute("appName", appName);
         Optional<Client> clientFromDb = clientRepository.findById(1);
         final Client client = clientFromDb.get();
         String message = "deze klant kan niet gevonden worden";
@@ -59,7 +56,6 @@ public class ClientController {
         else if (currentHour >= 17 && currentHour < 22) greetingPart1 = "Goedenavond ";
         else  greetingPart1 = "Goedennacht ";
 
-        model.addAttribute("appName", appName);
         model.addAttribute("greetingPart1", greetingPart1);
 
         Optional<Client> clientFromDb = clientRepository.findById(1);

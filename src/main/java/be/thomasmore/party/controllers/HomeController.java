@@ -10,13 +10,10 @@ import java.time.format.DateTimeFormatter;
 @Controller
 public class HomeController {
 
-    String appName = "Party";
-
     @GetMapping({"/", "/home"})
     public String home(Model model) {
         int myCalculatedValue = 5 * 12;
         model.addAttribute("myCalculatedValue", myCalculatedValue);
-        model.addAttribute("appName",appName);
         return "home";
     }
 
@@ -28,7 +25,6 @@ public class HomeController {
         model.addAttribute("myName", myName);
         model.addAttribute("myStreet", myStreet);
         model.addAttribute("myCity", myCity);
-        model.addAttribute("appName",appName);
         return "about";
     }
 
@@ -37,7 +33,6 @@ public class HomeController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime dateNow = LocalDateTime.now();
         LocalDateTime dateMax = LocalDateTime.now().plusDays(30);
-        model.addAttribute("appName",appName);
         model.addAttribute("dateNow",dateNow.format(formatter));
         model.addAttribute("dateMax",dateMax.format(formatter));
         return "pay";

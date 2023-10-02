@@ -14,19 +14,18 @@ import java.util.Optional;
 @Controller
 public class VenueController {
 
-    String appName = "Party";
     @Autowired
     private VenueRepository venueRepository;
 
     @GetMapping({"/venuelist"})
     public String venuelist(Model model) {
-        model.addAttribute("appName", appName);
+        final Iterable<Venue> allVenues = venueRepository.findAll();
+        model.addAttribute("venues", allVenues);
         return "venuelist";
     }
     @GetMapping({"/venuedetails/{id}","/venuedetails", "/venuedetails/"})
     public String venuedetails(Model model, @PathVariable (required = false) Integer id) {
         if(id == null) return "venuedetails";
-        model.addAttribute("appName", appName);
         Optional<Venue> venueFromDb = venueRepository.findById(id);
         final Venue venue = venueFromDb.get();
         if (venueFromDb.isPresent()) model.addAttribute("venue", venue);

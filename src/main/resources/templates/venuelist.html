@@ -18,9 +18,9 @@
 <div th:replace="~{fragments/header :: header}">Header</div>
 
 <ul>
-    <li><a th:href="@{/venuedetails/1}">Venue 1</a></li>
-    <li><a th:href="@{/venuedetails/2}">Venue 2</a></li>
-    <li><a th:href="@{/venuedetails/3}">Venue 3</a></li>
+    <li th:each="venue:${venues}">
+        <a th:href="@{|/venuedetails/${venue.id}|}" th:text="${venue.venueName}">venue name</a>
+    </li>
 </ul>
 
 <div th:replace="~{fragments/footer :: footer}">Footer</div>
