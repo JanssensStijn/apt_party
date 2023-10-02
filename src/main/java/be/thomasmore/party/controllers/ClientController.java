@@ -22,11 +22,10 @@ public class ClientController {
     public String clienthome(Model model) {
         model.addAttribute("appName", appName);
         Optional<Client> clientFromDb = clientRepository.findById(1);
-        String message = "";
+        String message = "deze klant kan niet gevonden worden";
         if (clientFromDb.isPresent()){
             message = "klant \"" + clientFromDb.get().getName() + "\" gevonden";
         }
-        else message = "deze klant kan niet gevonden worden";
         model.addAttribute("message", message);
         return "clienthome";
     }
@@ -35,13 +34,12 @@ public class ClientController {
     public String clientdetails(Model model) {
         model.addAttribute("appName", appName);
         Optional<Client> clientFromDb = clientRepository.findById(1);
-        String message = "";
+        String message = "deze klant kan niet gevonden worden";
         if (clientFromDb.isPresent()){
             double discount = 0;
             if(clientFromDb.get().getTotalAmount() >= 100) discount = clientFromDb.get().getTotalAmount() * 0.005;
             message = clientFromDb.get().getName() + ", je discount is " + discount + "EUR";
         }
-        else message = "deze klant kan niet gevonden worden";
         model.addAttribute("message", message);
         return "clientdetails";
     }
@@ -63,7 +61,7 @@ public class ClientController {
         model.addAttribute("greetingPart1", greetingPart1);
 
         Optional<Client> clientFromDb = clientRepository.findById(1);
-        String message = "";
+        String message = "deze klant kan niet gevonden worden";
         if (clientFromDb.isPresent()){
             String greetingPart2 = "", greetingPart3 = "";
             if(clientFromDb.get().getNrOfOrders() == 0) {
@@ -88,7 +86,7 @@ public class ClientController {
             //model.addAttribute("greetingPart3", greetingPart3);
 
             message = greetingPart1 + greetingPart2 + clientFromDb.get().getName() + greetingPart3;
-        }else message = "deze klant kan niet gevonden worden";
+        }
         model.addAttribute("message", message);
         return "clientgreeting";
     }
