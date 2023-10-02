@@ -19,5 +19,7 @@
 <P th:text="${message}"></P>
 <a class="btn btn-primary" th:href="@{/clientgreeting}" role="button">Client greeting</a>
 <a class="btn btn-primary" th:href="@{/clientdetails}" role="button">Client details</a>
+
+<div th:replace="~{fragments/footer :: footer}">Footer</div>
 </body>
 </html>

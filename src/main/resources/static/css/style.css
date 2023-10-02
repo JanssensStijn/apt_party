@@ -22,6 +22,14 @@ nav{
     border-style: solid;
     border-radius: 10px;
 }
+.footer{
+    text-align: center;
+    background-color: slategrey;
+    color: black;
+    margin-top: 20px;
+}
+
+
 .card{
     margin-top: 20px;
 }
