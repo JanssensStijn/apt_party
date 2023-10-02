@@ -42,96 +42,101 @@
         </ul>
     </div>
 </nav>
-
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top placeholder" src="" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title" th:text="${venue.getVenueName()}">Card title</h5>
+<div class="content">
+    <div class="contentFound" th:if="${venue}">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top placeholder" src="" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${venue.getVenueName()}">Card title</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                City:
+                            </div>
+                            <div class="col-sm-6" th:text="${venue.getCity()}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                Capacity:
+                            </div>
+                            <div class="col-sm-6" th:text="${venue.getCapacity()}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                Indoor:
+                            </div>
+                            <div class="col-sm-6" th:text="${venue.isIndoor() ? 'yes' : 'no'}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                Outdoor:
+                            </div>
+                            <div class="col-sm-6" th:text="${venue.isOutdoor() ? 'yes' : 'no'}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                food provided:
+                            </div>
+                            <div class="col-sm-6" th:text="${venue.isFoodProvided() ? 'yes' : 'no'}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                free parking:
+                            </div>
+                            <div class="col-sm-6" th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                distance to public transport:
+                            </div>
+                            <div class="col-sm-6" th:text="|${venue.getDistanceFromPublicTransportInKm()} km|">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link" th:href="@{${venue.getLinkMoreInfo()}}" th:text="${venue.getLinkMoreInfo()}">Another
+                    link</a>
+            </div>
+        </div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        City:
-                    </div>
-                    <div class="col-sm-6" th:text="${venue.getCity()}">
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        Capacity:
-                    </div>
-                    <div class="col-sm-6" th:text="${venue.getCapacity()}">
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        Indoor:
-                    </div>
-                    <div class="col-sm-6" th:text="${venue.isIndoor() ? 'yes' : 'no'}">
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        Outdoor:
-                    </div>
-                    <div class="col-sm-6" th:text="${venue.isOutdoor() ? 'yes' : 'no'}">
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        food provided:
-                    </div>
-                    <div class="col-sm-6" th:text="${venue.isFoodProvided() ? 'yes' : 'no'}">
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        free parking:
-                    </div>
-                    <div class="col-sm-6" th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        distance to public transport:
-                    </div>
-                    <div class="col-sm-6" th:text="|${venue.getDistanceFromPublicTransportInKm()} km|">
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-    <div class="card-body">
-        <a href="#" class="card-link" th:href="@{${venue.getLinkMoreInfo()}}" th:text="${venue.getLinkMoreInfo()}">Another
-            link</a>
+    <div class="contentFound" th:unless="${venue}">
+        <p>no venue was chosen</p>
     </div>
 </div>
-
 </body>
 </html>

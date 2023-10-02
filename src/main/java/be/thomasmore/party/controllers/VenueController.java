@@ -23,7 +23,7 @@ public class VenueController {
         model.addAttribute("appName", appName);
         return "venuelist";
     }
-    @GetMapping({"/venuedetails/{id}","/venuedetails"})
+    @GetMapping({"/venuedetails/{id}","/venuedetails", "/venuedetails/"})
     public String venuedetails(Model model, @PathVariable (required = false) Integer id) {
         if(id == null) return "venuedetails";
         model.addAttribute("appName", appName);
