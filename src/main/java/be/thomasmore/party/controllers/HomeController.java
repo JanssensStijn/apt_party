@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.DayOfWeek;
 
 @Controller
 public class HomeController {
@@ -33,8 +34,11 @@ public class HomeController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime dateNow = LocalDateTime.now();
         LocalDateTime dateMax = LocalDateTime.now().plusDays(30);
+        boolean isWeekend = false;
+        if(dateNow.getDayOfWeek() == DayOfWeek.SATURDAY || dateNow.getDayOfWeek() == DayOfWeek.SUNDAY)  isWeekend = true;
         model.addAttribute("dateNow",dateNow.format(formatter));
         model.addAttribute("dateMax",dateMax.format(formatter));
+        model.addAttribute("isWeekend",isWeekend);
         return "pay";
     }
 }
