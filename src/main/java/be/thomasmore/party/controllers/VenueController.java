@@ -1,5 +1,6 @@
 package be.thomasmore.party.controllers;
 
+import be.thomasmore.party.model.Client;
 import be.thomasmore.party.model.Venue;
 import be.thomasmore.party.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,21 +19,10 @@ public class VenueController {
 
     @GetMapping({"/venuedetails"})
     public String venuedetails(Model model) {
-        /*Venue myVenue = new Venue();
-        myVenue.setVenueName("Boesj");
-        myVenue.setLinkMoreInfo("https://sass-lang.com/");
-        myVenue.setCapacity(100);
-        myVenue.setFoodProvided(false);
-        myVenue.setIndoor(true);
-        myVenue.setOutdoor(false);
-        myVenue.setFreeParkingAvailable(false);
-        myVenue.setCity("Mechelen");
-        myVenue.setDistanceFromPublicTransportInKm(1);
-        model.addAttribute("Venue", myVenue);*/
-
         model.addAttribute("appName", appName);
         Optional<Venue> venueFromDb = venueRepository.findById(1);
-        if (venueFromDb.isPresent()) model.addAttribute("venue", venueFromDb.get());
+        final Venue venue = venueFromDb.get();
+        if (venueFromDb.isPresent()) model.addAttribute("venue", venue);
         return "venuedetails";
     }
 }

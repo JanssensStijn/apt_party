@@ -22,9 +22,10 @@ public class ClientController {
     public String clienthome(Model model) {
         model.addAttribute("appName", appName);
         Optional<Client> clientFromDb = clientRepository.findById(1);
+        final Client client = clientFromDb.get();
         String message = "deze klant kan niet gevonden worden";
         if (clientFromDb.isPresent()){
-            message = "klant \"" + clientFromDb.get().getName() + "\" gevonden";
+            message = "klant \"" + client.getName() + "\" gevonden";
         }
         model.addAttribute("message", message);
         return "clienthome";
@@ -34,11 +35,12 @@ public class ClientController {
     public String clientdetails(Model model) {
         model.addAttribute("appName", appName);
         Optional<Client> clientFromDb = clientRepository.findById(1);
+        final Client client = clientFromDb.get();
         String message = "deze klant kan niet gevonden worden";
         if (clientFromDb.isPresent()){
             double discount = 0;
-            if(clientFromDb.get().getTotalAmount() >= 100) discount = clientFromDb.get().getTotalAmount() * 0.005;
-            message = clientFromDb.get().getName() + ", je discount is " + discount + "EUR";
+            if(client.getTotalAmount() >= 100) discount = client.getTotalAmount() * 0.005;
+            message = client.getName() + ", je discount is " + discount + "EUR";
         }
         model.addAttribute("message", message);
         return "clientdetails";
@@ -61,27 +63,28 @@ public class ClientController {
         model.addAttribute("greetingPart1", greetingPart1);
 
         Optional<Client> clientFromDb = clientRepository.findById(1);
+        final Client client = clientFromDb.get();
         String message = "deze klant kan niet gevonden worden";
         if (clientFromDb.isPresent()){
             String greetingPart2 = "", greetingPart3 = "";
-            if(clientFromDb.get().getNrOfOrders() == 0) {
+            if(client.getNrOfOrders() == 0) {
                 greetingPart2 = "";
                 greetingPart3 = ", en welkom!";
             }
-            else if(clientFromDb.get().getNrOfOrders() >= 10 && clientFromDb.get().getNrOfOrders() < 50) {
+            else if(client.getNrOfOrders() >= 10 && clientFromDb.get().getNrOfOrders() < 50) {
                 greetingPart2 = "beste ";
                 greetingPart3 = "";
             }
-            else if(clientFromDb.get().getNrOfOrders() >= 50 && clientFromDb.get().getNrOfOrders() < 80) {
+            else if(client.getNrOfOrders() >= 50 && clientFromDb.get().getNrOfOrders() < 80) {
                 greetingPart2 = "allerliefste ";
                 greetingPart3 = "";
             }
-            else if(clientFromDb.get().getNrOfOrders() >= 80) {
+            else if(client.getNrOfOrders() >= 80) {
                 greetingPart2 = "allerliefste ";
                 greetingPart3 = ", jij bent een topper!";
             }
 
-            message = greetingPart1 + greetingPart2 + clientFromDb.get().getName() + greetingPart3;
+            message = greetingPart1 + greetingPart2 + client.getName() + greetingPart3;
         }
         model.addAttribute("message", message);
         return "clientgreeting";
