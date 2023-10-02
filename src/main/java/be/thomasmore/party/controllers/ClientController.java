@@ -80,10 +80,6 @@ public class ClientController {
                 greetingPart2 = "allerliefste ";
                 greetingPart3 = ", jij bent een topper!";
             }
-            //model.addAttribute("client", clientFromDb.get());
-
-            //model.addAttribute("greetingPart2", greetingPart2);
-            //model.addAttribute("greetingPart3", greetingPart3);
 
             message = greetingPart1 + greetingPart2 + clientFromDb.get().getName() + greetingPart3;
         }
