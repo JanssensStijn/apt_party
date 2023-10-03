@@ -23,12 +23,12 @@ public class ArtistController {
         model.addAttribute("artists", allArtists);
         return "artistlist";
     }
-    @GetMapping({"/venuedetails/{id}","/venuedetails", "/venuedetails/"})
-    public String venuedetails(Model model, @PathVariable (required = false) Integer id) {
-        if(id == null) return "venuedetails";
-        Optional<Venue> venueFromDb = venueRepository.findById(id);
-        final Venue venue = venueFromDb.get();
-        if (venueFromDb.isPresent()) model.addAttribute("venue", venue);
-        return "venuedetails";
+    @GetMapping({"/artistdetails/{id}","/artistdetails", "/artistdetails/"})
+    public String artistdetails(Model model, @PathVariable (required = false) Integer id) {
+        if(id == null) return "artistdetails";
+        Optional<Artist> artistFromDb = artistRepository.findById(id);
+        final Artist artist = artistFromDb.get();
+        if (artistFromDb.isPresent()) model.addAttribute("artist", artist);
+        return "artistdetails";
     }
 }
