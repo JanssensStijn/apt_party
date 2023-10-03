@@ -42,6 +42,7 @@ values (
            'https://www.nekkerhalbrusselsnorth.com/nl/organiseer/hal/',
            8800, false, true, false, true, 'Mechelen', 4);
 -------------------------------------------------------------------------------------------
+
 INSERT INTO ARTIST (
     ID, ARTIST_NAME, BIO, GENRE, LINK_MORE_INFO, PORTFOLIO)
 VALUES (
@@ -88,17 +89,18 @@ VALUES (
            zijn al getroffen door zijn prestaties.',
            'Allround, Dance, Techno', 'https://vi.be/platform/robberoels', 'Shake
 That Asspi 2020');
+
 INSERT INTO ARTIST (
-    ID, ARTIST_NAME, BIO, GENRE, LINK_MORE_INFO, PORTFOLIO)
+ID, ARTIST_NAME, BIO, GENRE, LINK_MORE_INFO, PORTFOLIO)
 VALUES (
-           6, 'Toloko',
-           'My name is Stan, also known as Toloko, the DJ who adds the right amount
-           of loco-ness to your party! I am an upcoming DJ talent in the region of
-           Zemst, Belgium. I started my career behind the turntables at the age of 20
-           at local parties. Entertaining the crowd and making people dance to my
-           music, makes me happy. Every gig, I bring my party people a new and
-           customized set and I introduce them to the latest tracks.',
-           'house, r&b', 'https://www.toloko.be/', '');
+6, 'Toloko',
+'My name is Stan, also known as Toloko, the DJ who adds the right amount
+of loco-ness to your party! I am an upcoming DJ talent in the region of
+Zemst, Belgium. I started my career behind the turntables at the age of 20
+at local parties. Entertaining the crowd and making people dance to my
+music, makes me happy. Every gig, I bring my party people a new and
+customized set and I introduce them to the latest tracks.',
+'house, r&b', 'https://www.toloko.be/', '');
 INSERT INTO ARTIST (
     ID, ARTIST_NAME, BIO, GENRE, LINK_MORE_INFO, PORTFOLIO)
 VALUES (
@@ -118,6 +120,7 @@ VALUES (
 Dreamville, MnM Start to Dj Finalist Flowtrack Summer Camp Casa Blanca
 Festival Sunrise Festival Red ''n Blue Café Local Noxx Publik Vice Festival
 KdG TD ...');
+
 --------------------------------------------------------------------------------------------------------
 
 

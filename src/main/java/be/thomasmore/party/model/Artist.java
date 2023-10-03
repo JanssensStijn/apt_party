@@ -1,5 +1,6 @@
 package be.thomasmore.party.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -11,6 +12,7 @@ public class Artist {
     private String artistName;
     private String linkMoreInfo;
     private String genre;
+    @Column(length=500)
     private String bio;
     private String portfolio;
 
