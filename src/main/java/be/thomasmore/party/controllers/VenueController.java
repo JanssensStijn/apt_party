@@ -23,24 +23,19 @@ public class VenueController {
         model.addAttribute("venues", allVenues);
         return "venuelist";
     }
-    @GetMapping({"/venuedetails/{id}","/venuedetails", "/venuedetails/"})
-    public String venuedetails(Model model, @PathVariable (required = false) Integer id) {
-        if(id == null) return "venuedetails";
+
+    @GetMapping({"/venuedetails/{id}", "/venuedetails", "/venuedetails/"})
+    public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
+        if (id == null) return "venuedetails";
         Optional<Venue> venueFromDb = venueRepository.findById(id);
         final Venue venue = venueFromDb.get();
         if (venueFromDb.isPresent()) model.addAttribute("venue", venue);
         return "venuedetails";
     }
 
-    @GetMapping({"/venuelist/outdoor/yes"})
-    public String venuelistOutdoorYes(Model model) {
-        final Iterable<Venue> allVenues = venueRepository.findByOutdoor(true);
-        model.addAttribute("venues", allVenues);
-        return "venuelist";
-    }
-    @GetMapping({"/venuelist/outdoor/no"})
-    public String venuelistOutdoorNo(Model model) {
-        final Iterable<Venue> allVenues = venueRepository.findByOutdoor(false);
+    @GetMapping({"/venuelist/outdoor/{outdoor}"})
+    public String venuelistOutdoorYes(Model model, @PathVariable(required = false) Boolean outdoor) {
+        final Iterable<Venue> allVenues = venueRepository.findByOutdoor(outdoor);
         model.addAttribute("venues", allVenues);
         return "venuelist";
     }
