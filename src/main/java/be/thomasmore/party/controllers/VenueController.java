@@ -31,4 +31,11 @@ public class VenueController {
         if (venueFromDb.isPresent()) model.addAttribute("venue", venue);
         return "venuedetails";
     }
+
+    @GetMapping({"/venuelist/outdoor/yes"})
+    public String venuelistOutdoorYes(Model model) {
+        final Iterable<Venue> allVenues = venueRepository.findByOutdoor(true);
+        model.addAttribute("venues", allVenues);
+        return "venuelist";
+    }
 }
