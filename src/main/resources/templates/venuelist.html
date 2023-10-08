@@ -17,6 +17,11 @@
 
 <div th:replace="~{fragments/header :: header}">Header</div>
 
+<p>Outdoor:
+<a th:href="@{|/venuelist/outdoor/yes|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">yes</a>
+<a th:href="@{|/venuelist/outdoor/no|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">no</a>
+<a th:href="@{|/venuelist|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">all</a>
+</p>
 <ul>
     <li th:each="venue:${venues}">
         <a th:href="@{|/venuedetails/${venue.id}|}" th:text="${venue.venueName}">venue name</a>

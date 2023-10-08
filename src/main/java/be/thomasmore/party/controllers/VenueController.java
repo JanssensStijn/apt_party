@@ -38,4 +38,10 @@ public class VenueController {
         model.addAttribute("venues", allVenues);
         return "venuelist";
     }
+    @GetMapping({"/venuelist/outdoor/no"})
+    public String venuelistOutdoorNo(Model model) {
+        final Iterable<Venue> allVenues = venueRepository.findByOutdoor(false);
+        model.addAttribute("venues", allVenues);
+        return "venuelist";
+    }
 }
