@@ -27,12 +27,13 @@ public class VenueController {
         return "venuedetails";
     }
 
-    @GetMapping({"/venuelist", "/venuelist/","/venuelist/{filter}","/venuelist/{filter}/","/venuelist/outdoor/all", "/venuelist/indoor/all" })
+    @GetMapping({"/venuelist", "/venuelist/","/venuelist/{filter}","/venuelist/{filter}/","/venuelist/outdoor/all", "/venuelist/indoor/all", "/venuelist/capacity/all" })
     public String venuelist(Model model, @PathVariable(required = false) String filter) {
         final Iterable<Venue> allVenues = venueRepository.findAll();
         model.addAttribute("venues", allVenues);
         model.addAttribute("outdoorFilter", "all");
         model.addAttribute("indoorFilter", "all");
+        model.addAttribute("capacityFilter", "all");
         return "venuelist";
     }
 
@@ -43,6 +44,7 @@ public class VenueController {
         if(filter.equals("yes")||filter.equals("no")) model.addAttribute("outdoorFilter", filter );
         else model.addAttribute("outdoorFilter", "no" );
         model.addAttribute("indoorFilter", "all" );
+        model.addAttribute("capacityFilter", "all");
         return "venuelist";
     }
 
@@ -52,6 +54,31 @@ public class VenueController {
         model.addAttribute("venues", allVenues);
         if(filter.equals("yes")||filter.equals("no")) model.addAttribute("indoorFilter", filter );
         else model.addAttribute("indoorFilter", "no" );
+        model.addAttribute("outdoorFilter", "all" );
+        model.addAttribute("capacityFilter", "all");
+        return "venuelist";
+    }
+
+    @GetMapping({"/venuelist/capacity/{filter}"})
+    public String venuelistCapacity(Model model, @PathVariable(required = false) String filter) {
+        switch(filter){
+            case "S":  final Iterable<Venue> allSmallVenues = venueRepository.findByCapacityLessThan(200);
+                        model.addAttribute("venues", allSmallVenues);
+            break;
+            case "M":  final Iterable<Venue> allMediumVenues = venueRepository.findByCapacityBetween(200, 600);
+                        model.addAttribute("venues", allMediumVenues);
+                break;
+            case "L":  final Iterable<Venue> allLargeVenues = venueRepository.findByCapacityGreaterThan(600);
+                        model.addAttribute("venues", allLargeVenues);
+                break;
+            default:  final Iterable<Venue> allVenues = venueRepository.findAll();
+                model.addAttribute("venues", allVenues);
+            break;
+        }
+
+        if(filter.equals("S")||filter.equals("M")||filter.equals("L")) model.addAttribute("capacityFilter", filter );
+        else model.addAttribute("capacityFilter", "all");
+        model.addAttribute("indoorFilter", "all");
         model.addAttribute("outdoorFilter", "all" );
         return "venuelist";
     }

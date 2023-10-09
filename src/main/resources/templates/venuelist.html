@@ -35,6 +35,17 @@
        class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">no</a>
 </p>
 
+<p>Capacity:
+    <a th:href="@{|/venuelist/capacity/all|}" th:classappend="${capacityFilter != 'S' && capacityFilter != 'M' && capacityFilter != 'L'} ? 'activeFilter': 'notActiveFilter'"
+       class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">all</a>
+    <a th:href="@{|/venuelist/capacity/S|}" th:classappend="${capacityFilter == 'S'} ? 'activeFilter': 'notActiveFilter'"
+       class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">S</a>
+    <a th:href="@{|/venuelist/capacity/M|}" th:classappend="${capacityFilter == 'M'} ? 'activeFilter': 'notActiveFilter'"
+       class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">M</a>
+    <a th:href="@{|/venuelist/capacity/L|}" th:classappend="${capacityFilter == 'L'} ? 'activeFilter': 'notActiveFilter'"
+       class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">L</a>
+</p>
+
 <ul>
     <li th:each="venue:${venues}">
         <a th:href="@{|/venuedetails/${venue.id}|}" th:text="${venue.venueName}">venue name</a>
