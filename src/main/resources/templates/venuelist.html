@@ -18,13 +18,23 @@
 <div th:replace="~{fragments/header :: header}">Header</div>
 
 <p>Outdoor:
-    <a th:href="@{|/venuelist/outdoor/all|}" th:classappend="${filter == 'all'} ? 'activeFilter': 'notActiveFilter'"
+    <a th:href="@{|/venuelist/outdoor/all|}" th:classappend="${outdoorFilter == 'all'} ? 'activeFilter': 'notActiveFilter'"
        class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">all</a>
-    <a th:href="@{|/venuelist/outdoor/yes|}" th:classappend="${filter == 'yes'} ? 'activeFilter': 'notActiveFilter'"
+    <a th:href="@{|/venuelist/outdoor/yes|}" th:classappend="${outdoorFilter == 'yes'} ? 'activeFilter': 'notActiveFilter'"
        class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">yes</a>
-    <a th:href="@{|/venuelist/outdoor/no|}" th:classappend="${filter == 'no'} ? 'activeFilter': 'notActiveFilter'"
+    <a th:href="@{|/venuelist/outdoor/no|}" th:classappend="${outdoorFilter != 'all' && outdoorFilter != 'yes'} ? 'activeFilter': 'notActiveFilter'"
        class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">no</a>
 </p>
+
+<p>Indoor:
+    <a th:href="@{|/venuelist/indoor/all|}" th:classappend="${indoorFilter == 'all'} ? 'activeFilter': 'notActiveFilter'"
+       class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">all</a>
+    <a th:href="@{|/venuelist/indoor/yes|}" th:classappend="${indoorFilter == 'yes'} ? 'activeFilter': 'notActiveFilter'"
+       class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">yes</a>
+    <a th:href="@{|/venuelist/indoor/no|}" th:classappend="${indoorFilter != 'all' && indoorFilter != 'yes'} ? 'activeFilter': 'notActiveFilter'"
+       class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">no</a>
+</p>
+
 <ul>
     <li th:each="venue:${venues}">
         <a th:href="@{|/venuedetails/${venue.id}|}" th:text="${venue.venueName}">venue name</a>
