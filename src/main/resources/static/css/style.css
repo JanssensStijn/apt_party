@@ -37,3 +37,11 @@ nav{
 .card-img-top{
     height:150px;
 }
+
+
+.activeFilter{
+    background-color: red;
+}
+.notActiveFilter{
+    background-color: #007bff;
+}

@@ -17,12 +17,6 @@ public class VenueController {
     @Autowired
     private VenueRepository venueRepository;
 
-    @GetMapping({"/venuelist"})
-    public String venuelist(Model model) {
-        final Iterable<Venue> allVenues = venueRepository.findAll();
-        model.addAttribute("venues", allVenues);
-        return "venuelist";
-    }
 
     @GetMapping({"/venuedetails/{id}", "/venuedetails", "/venuedetails/"})
     public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
@@ -33,10 +27,24 @@ public class VenueController {
         return "venuedetails";
     }
 
-    @GetMapping({"/venuelist/outdoor/{outdoor}"})
-    public String venuelistOutdoorYes(Model model, @PathVariable(required = false) Boolean outdoor) {
-        final Iterable<Venue> allVenues = venueRepository.findByOutdoor(outdoor);
+    @GetMapping({"/venuelist", "/venuelist/", "/venuelist/outdoor","/venuelist/outdoor/","/venuelist/outdoor/all" })
+    public String venuelist(Model model) {
+        final Iterable<Venue> allVenues = venueRepository.findAll();
         model.addAttribute("venues", allVenues);
+        model.addAttribute("filter", "all");
         return "venuelist";
+    }
+
+    @GetMapping({"/venuelist/outdoor/{filter}"})
+    public String venuelistOutdoor(Model model, @PathVariable(required = false) String filter) {
+        final Iterable<Venue> allVenues = venueRepository.findByOutdoor(filter.equals("yes"));
+        model.addAttribute("venues", allVenues);
+        model.addAttribute("filter", filter );
+        return "venuelist";
+    }
+
+    @GetMapping({"/error"})
+    public String error(Model model) {
+        return "error";
     }
 }
