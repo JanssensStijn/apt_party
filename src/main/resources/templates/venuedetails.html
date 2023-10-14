@@ -18,7 +18,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-1">
-            <a th:href="@{|/venuedetails/${prevId}|}"  th:classappend="${venue.getId() == 1} ? 'hidden'"
+            <a th:href="@{|/venuedetails/${prevId}|}" th:classappend="${prevId == null} ? 'hidden'"
                class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true"><<<</a>
         </div>
         <div class="col-sm-10">
@@ -120,7 +120,7 @@
             </div>
         </div>
         <div class="col-sm-1">
-            <a th:href="@{|/venuedetails/${nextId}|}"  th:classappend="${venue.getId() == 11} ? 'hidden'"
+            <a th:href="@{|/venuedetails/${nextId}|}" th:classappend="${nextId == null} ? 'hidden'"
                class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">>>></a>.
         </div>
     </div>

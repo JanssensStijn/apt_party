@@ -17,57 +17,72 @@
 
 <div th:replace="~{fragments/header :: header}">Header</div>
 
-<div class="content">
-    <div class="contentFound" th:if="${artist}">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top placeholder" src="" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${artist.getArtistName()}">Card title</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                Genre:
-                            </div>
-                            <div class="col-sm-6" th:text="${artist.getGenre()}">
-                            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+            <a th:href="@{|/artistdetails/${prevId}|}" th:classappend="${nextId == null} ? 'hidden'"
+               class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true"><<<</a>
+        </div>
+        <div class="col-sm-10">
+            <div class="content">
+                <div class="contentFound" th:if="${artist}">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top placeholder" src="" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${artist.getArtistName()}">Card title</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            Genre:
+                                        </div>
+                                        <div class="col-sm-6" th:text="${artist.getGenre()}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            Bio:
+                                        </div>
+                                        <div class="col-sm-6" th:text="${artist.getBio()}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            Portfolio:
+                                        </div>
+                                        <div class="col-sm-6" th:text="${artist.getPortfolio()}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link" th:href="@{${artist.getLinkMoreInfo()}}" th:text="${artist.getLinkMoreInfo()}">Another link</a>
                         </div>
                     </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                Bio:
-                            </div>
-                            <div class="col-sm-6" th:text="${artist.getBio()}">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                Portfolio:
-                            </div>
-                            <div class="col-sm-6" th:text="${artist.getPortfolio()}">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="card-link" th:href="@{${artist.getLinkMoreInfo()}}" th:text="${artist.getLinkMoreInfo()}">Another link</a>
+                </div>
+                <div class="contentFound" th:unless="${artist}">
+                    <p>no artist was chosen</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="contentFound" th:unless="${artist}">
-        <p>no artist was chosen</p>
+        <div class="col-sm-1">
+            <a th:href="@{|/artistdetails/${nextId}|}" th:classappend="${nextId == null} ? 'hidden'"
+               class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">>>></a>.
+        </div>
     </div>
 </div>
+
 
 <div th:replace="~{fragments/footer :: footer}">Footer</div>
 </body>

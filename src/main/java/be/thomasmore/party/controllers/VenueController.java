@@ -32,7 +32,7 @@ public class VenueController {
 
             model.addAttribute("nextId", nextVenueFromDb.get().getId());
             model.addAttribute("prevId", prevVenueFromDb.get().getId());
-            model.addAttribute("venue", nextVenueFromDb.get());
+            model.addAttribute("venue", venueFromDb.get());
         }
 
         return "venuedetails";

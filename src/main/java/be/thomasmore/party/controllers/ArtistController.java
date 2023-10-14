@@ -25,10 +25,22 @@ public class ArtistController {
     }
     @GetMapping({"/artistdetails/{id}","/artistdetails", "/artistdetails/"})
     public String artistdetails(Model model, @PathVariable (required = false) Integer id) {
-        if(id == null) return "artistdetails";
+        if (id == null) return "artistdetails";
         Optional<Artist> artistFromDb = artistRepository.findById(id);
-        final Artist artist = artistFromDb.get();
-        if (artistFromDb.isPresent()) model.addAttribute("artist", artist);
+
+        if (artistFromDb.isPresent()){
+            Optional<Artist> nextArtistFromDb = artistRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+            if (nextArtistFromDb.isEmpty()) //if no venue id is higher, get the venue with the lowest id
+                nextArtistFromDb = artistRepository.findFirstByOrderByIdAsc();
+            Optional<Artist> prevArtistFromDb = artistRepository.findFirstByIdLessThanOrderByIdDesc(id);
+            if (prevArtistFromDb.isEmpty()) //if no venue id is lower, get the venue with the highest id
+                prevArtistFromDb = artistRepository.findFirstByOrderByIdDesc();
+
+            model.addAttribute("nextId", nextArtistFromDb.get().getId());
+            model.addAttribute("prevId", prevArtistFromDb.get().getId());
+            model.addAttribute("artist", artistFromDb.get());
+        }
+
         return "artistdetails";
     }
 }

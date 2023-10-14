@@ -45,3 +45,6 @@ nav{
 .notActiveFilter{
     background-color: #007bff;
 }
+.hidden{
+    visibility: hidden;
+}
