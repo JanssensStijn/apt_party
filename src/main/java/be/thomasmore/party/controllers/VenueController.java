@@ -1,6 +1,5 @@
 package be.thomasmore.party.controllers;
 
-import be.thomasmore.party.model.Client;
 import be.thomasmore.party.model.Venue;
 import be.thomasmore.party.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +16,25 @@ public class VenueController {
     @Autowired
     private VenueRepository venueRepository;
 
-
     @GetMapping({"/venuedetails/{id}", "/venuedetails", "/venuedetails/"})
     public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
+
         if (id == null) return "venuedetails";
         Optional<Venue> venueFromDb = venueRepository.findById(id);
-        final Venue venue = venueFromDb.get();
-        if (venueFromDb.isPresent()) model.addAttribute("venue", venue);
+
+        if (venueFromDb.isPresent()){
+            Optional<Venue> nextVenueFromDb = venueRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+            if (nextVenueFromDb.isEmpty()) //if no venue id is higher, get the venue with the lowest id
+                nextVenueFromDb = venueRepository.findFirstByOrderByIdAsc();
+            Optional<Venue> prevVenueFromDb = venueRepository.findFirstByIdLessThanOrderByIdDesc(id);
+            if (prevVenueFromDb.isEmpty()) //if no venue id is lower, get the venue with the highest id
+                prevVenueFromDb = venueRepository.findFirstByOrderByIdDesc();
+
+            model.addAttribute("nextId", nextVenueFromDb.get().getId());
+            model.addAttribute("prevId", prevVenueFromDb.get().getId());
+            model.addAttribute("venue", nextVenueFromDb.get());
+        }
+
         return "venuedetails";
     }
 

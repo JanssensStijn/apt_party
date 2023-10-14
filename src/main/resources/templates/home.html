@@ -16,12 +16,7 @@
 <body>
 <div th:replace="~{fragments/header :: header}">Header</div>
 
-<p> Dit is mijn eerste webapp via Spring <br><br>
-    5x12=</p>
-<p th:text="|Berekent in java: ${myCalculatedValue}|"></p>
-<p th:text="|Rechstreeks berekent in html: ${5*12}|">app</p>
-
-<a th:href="@{/about}">klik hier om naar "about" te gaan</a>
+<img th:src="@{/img/party.jpg}" style="max-height: 200px; "/>
 
 <div th:replace="~{fragments/footer :: footer}">Footer</div>
 </body>

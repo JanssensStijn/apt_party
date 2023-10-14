@@ -13,8 +13,7 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String home(Model model) {
-        int myCalculatedValue = 5 * 12;
-        model.addAttribute("myCalculatedValue", myCalculatedValue);
+
         return "home";
     }
 
