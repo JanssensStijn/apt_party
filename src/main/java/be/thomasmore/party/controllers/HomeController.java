@@ -19,9 +19,9 @@ public class HomeController {
 
     @GetMapping("/about")
     public String about(Model model) {
-        String myName = "Stijn Janssens";
-        String myStreet = "Braambessenweg 2";
-        String myCity = "Aarschot";
+        String myName = "Stijn";
+        String myStreet = "somewhere";
+        String myCity = "a town";
         model.addAttribute("myName", myName);
         model.addAttribute("myStreet", myStreet);
         model.addAttribute("myCity", myCity);
