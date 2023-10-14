@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pay</title>
+  <title>Artistlist</title>
   <!-- css en js file inladen voor bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -14,11 +14,14 @@
   <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
 </head>
 <body>
+
 <div th:replace="~{fragments/header :: header}">Header</div>
 
-<p th:text="|de huidige datum = ${dateNow}|">date</p>
-<p th:text="|de maximale datum om te betalen = ${dateMax}|">date</p>
-<p th:text="${isWeekend ? 'Prettig weekend, je hebt het verdiend!' : 'Voor je het weet is het weekend!'}">weekend?</p>
+<ul>
+  <li th:each="artist:${artists}">
+    <a th:href="@{|/artistdetails/${artist.id}|}" th:text="${artist.artistName}">artist name</a>
+  </li>
+</ul>
 
 <div th:replace="~{fragments/footer :: footer}">Footer</div>
 </body>

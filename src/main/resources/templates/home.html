@@ -14,41 +14,10 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" th:text="${appName}">
-        Navbar
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/home}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/about}">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/pay}">Pay</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/venuedetails}">Venue Details</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/clienthome}">Client Home</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div th:replace="~{fragments/header :: header}">Header</div>
 
-<p> Dit is mijn eerste webapp via Spring <br><br>
-    5x12=</p>
-<p th:text="|Berekent in java: ${myCalculatedValue}|"></p>
-<p th:text="|Rechstreeks berekent in html: ${5*12}|">app</p>
+<img th:src="@{/img/party.jpg}" style="max-height: 200px; "/>
 
-<a th:href="@{/about}">klik hier om naar "about" te gaan</a>
-
+<div th:replace="~{fragments/footer :: footer}">Footer</div>
 </body>
 </html>
