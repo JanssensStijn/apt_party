@@ -4,7 +4,7 @@ COPY . /app
 WORKDIR /app
 RUN mvn clean install -DskipTests
 
-FROM openjdk:18-jdk-slim
+FROM openjdk:19
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
