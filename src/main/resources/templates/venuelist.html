@@ -18,8 +18,8 @@
 <div th:replace="~{fragments/header :: header}">Header</div>
 <div class="container">
     <div class="row">
-        <div class="col-md-5">
-            <p>Filtering</p>
+        <div class="col-md-5 filtering" th:if="${showFilter}">
+            <p>is het zichtbaar of niet</p>
         </div>
         <div class="col-md-7">
             <div class="row">

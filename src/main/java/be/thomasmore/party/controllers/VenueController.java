@@ -16,8 +16,6 @@ public class VenueController {
     @Autowired
     private VenueRepository venueRepository;
 
-
-
     @GetMapping({"/venuedetails/{id}", "/venuedetails", "/venuedetails/"})
     public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
 
@@ -38,6 +36,14 @@ public class VenueController {
         }
 
         return "venuedetails";
+    }
+
+    @GetMapping({"/venuelist", "/venuelist/","/venuelist/{filter}"})
+    public String venuelist(Model model, @PathVariable(required = false) String filter) {
+        final Iterable<Venue> allVenues = venueRepository.findAll();
+        model.addAttribute("venues", allVenues);
+        model.addAttribute("showFilter", true);
+        return "venuelist";
     }
 
     @GetMapping({"/error"})
