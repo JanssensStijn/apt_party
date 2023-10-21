@@ -53,23 +53,35 @@ public class VenueController {
     }
 
     @GetMapping({"/venuelist/filter"})
-    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minCapacity) {
-        logger.info(String.format("venueListWithFilter -- min = %d", minCapacity));
+    public String venueListWithFilter(Model model,
+                                      @RequestParam(required = false) Integer minCapacity,
+                                      @RequestParam(required = false) Integer maxCapacity) {
+
+        logger.info(String.format("venueListWithFilter -- min = %d -- max = %d", minCapacity, maxCapacity));
         final Iterable<Venue> allVenues;
         final long numberOfVenues;
 
-        if(minCapacity == null)
-        {
-            allVenues = venueRepository.findAll();
-            numberOfVenues = venueRepository.count();
-        }
-        else
+        if(minCapacity != null && maxCapacity == null)
         {
             allVenues = venueRepository.findByCapacityGreaterThanEqual(minCapacity);
             numberOfVenues = venueRepository.findAllByCapacityGreaterThanEqual(minCapacity).size();
-            //numberOfVenues = venueRepository.countByByCapacityGreaterThanEqual(minCapacity);
+        }
+        else if(minCapacity == null && maxCapacity != null)
+        {
+            allVenues = venueRepository.findByCapacityLessThan(maxCapacity);
+            numberOfVenues = venueRepository.findAllByCapacityLessThan(maxCapacity).size();
+        }
+        else if(minCapacity != null && maxCapacity != null)
+        {
+            allVenues = venueRepository.findByCapacityBetween(minCapacity,maxCapacity);
+            numberOfVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity).size();
+        }
+        else{
+            allVenues = venueRepository.findAll();
+            numberOfVenues = venueRepository.count();
         }
         model.addAttribute("minCapacityFiltered" , minCapacity);
+        model.addAttribute("maxCapacityFiltered" , maxCapacity);
         model.addAttribute("numberOfVenues", numberOfVenues);
         model.addAttribute("venues", allVenues);
         model.addAttribute("showFilter", true);
