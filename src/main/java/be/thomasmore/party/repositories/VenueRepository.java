@@ -19,12 +19,12 @@ public interface VenueRepository extends CrudRepository<Venue, Integer> {
     Optional<Venue> findFirstByOrderByIdDesc();
     Optional<Venue> findFirstByOrderByIdAsc();
 
-    Iterable<Venue> findByCapacityLessThan(Integer maxCapacity);
+    Iterable<Venue> findByCapacityLessThanEqual(Integer maxCapacity);
     Iterable<Venue> findByCapacityGreaterThanEqual(Integer minCapacity);
     Iterable<Venue> findByCapacityBetween(Integer minCapacity, Integer maxCapacity);
 
 
     List<Venue> findAllByCapacityGreaterThanEqual(Integer minCapacity);
-    List<Venue> findAllByCapacityLessThan(Integer maxCapacity);
+    List<Venue> findAllByCapacityLessThanEqual(Integer maxCapacity);
     List<Venue> findAllByCapacityBetween(Integer minCapacity, Integer maxCapacity);
 }

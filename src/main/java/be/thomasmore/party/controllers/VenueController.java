@@ -68,8 +68,8 @@ public class VenueController {
         }
         else if(minCapacity == null && maxCapacity != null)
         {
-            allVenues = venueRepository.findByCapacityLessThan(maxCapacity);
-            numberOfVenues = venueRepository.findAllByCapacityLessThan(maxCapacity).size();
+            allVenues = venueRepository.findByCapacityLessThanEqual(maxCapacity);
+            numberOfVenues = venueRepository.findAllByCapacityLessThanEqual(maxCapacity).size();
         }
         else if(minCapacity != null && maxCapacity != null)
         {
