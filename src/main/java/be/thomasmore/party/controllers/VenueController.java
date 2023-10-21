@@ -58,28 +58,9 @@ public class VenueController {
                                       @RequestParam(required = false) Integer maxCapacity) {
 
         logger.info(String.format("venueListWithFilter -- min = %d -- max = %d", minCapacity, maxCapacity));
-        final Iterable<Venue> allVenues;
-        final long numberOfVenues;
+        final Iterable<Venue> allVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity);
+        final long numberOfVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity).size();
 
-        if(minCapacity != null && maxCapacity == null)
-        {
-            allVenues = venueRepository.findAllByCapacityGreaterThanEqual(minCapacity);
-            numberOfVenues = venueRepository.findAllByCapacityGreaterThanEqual(minCapacity).size();
-        }
-        else if(minCapacity == null && maxCapacity != null)
-        {
-            allVenues = venueRepository.findAllByCapacityLessThanEqual(maxCapacity);
-            numberOfVenues = venueRepository.findAllByCapacityLessThanEqual(maxCapacity).size();
-        }
-        else if(minCapacity != null && maxCapacity != null)
-        {
-            allVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity);
-            numberOfVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity).size();
-        }
-        else{
-            allVenues = venueRepository.findAll();
-            numberOfVenues = venueRepository.count();
-        }
         model.addAttribute("minCapacityFiltered" , minCapacity);
         model.addAttribute("maxCapacityFiltered" , maxCapacity);
         model.addAttribute("numberOfVenues", numberOfVenues);
