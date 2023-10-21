@@ -39,6 +39,15 @@
                         <label for="maxDistance" class="filterName">max</label>
                         <input type="number" id="maxDistance" name="maxDistance" value="" th:value="${maxDistanceFiltered}" step="1" min="0"> km
                     </div>
+                    <h4>food</h4>
+                    <div class="oneFilter">
+                        <input type="radio" id="FoodProvidedYes" name="isFoodProvided" value="true" th:checked="${isFoodProvidedFiltered == true}">
+                        <label for="FoodProvidedYes" class="filterName">Yes</label><br>
+                        <input type="radio" id="FoodProvidedNo" name="isFoodProvided" value="false" th:checked="${isFoodProvidedFiltered == false}">
+                        <label for="FoodProvidedNo" class="filterName">No</label><br>
+                        <input type="radio" id="FoodProvidedAll" name="isFoodProvided" value="" th:checked="${isFoodProvidedFiltered == null}">
+                        <label for="FoodProvidedAll" class="filterName">All</label>
+                    </div>
                     <div class="oneFilter">
                         <input type="submit" value="search" class="buttonLook filterButton">
                     </div>

@@ -31,6 +31,7 @@ public interface VenueRepository extends CrudRepository<Venue, Integer> {
     List<Venue> findAllByCapacityBetween(Integer minCapacity, Integer maxCapacity);
     @Query("SELECT v FROM Venue v WHERE (?1 IS NULL OR v.capacity >= ?1)" +
             " AND (?2 IS NULL OR v.capacity <= ?2)" +
-            " AND (?3 IS NULL OR v.distanceFromPublicTransportInKm <= ?3)")
-    List<Venue> filter(Integer minCapacity, Integer maxCapacity, Integer maxDistance);
+            " AND (?3 IS NULL OR v.distanceFromPublicTransportInKm <= ?3)" +
+            " AND (?4 IS NULL OR v.foodProvided = ?4)")
+    List<Venue> filter(Integer minCapacity, Integer maxCapacity, Integer maxDistance, Boolean isFoodProvided);
 }
