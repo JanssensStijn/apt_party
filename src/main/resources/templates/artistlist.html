@@ -16,12 +16,51 @@
 <body>
 
 <div th:replace="~{fragments/header :: header}">Header</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="col-md-12">
+        <p style="text-align:center" th:text="|${numberOfArtists} artists found|">number of artists found</p>
+      </div>
+      <div class="col-md-12 allFilters"  th:if="${showFilter}">
+        <a class="buttonLook filterButton" th:href="@{/artistlist}">-</a>
+        <form>
+          <h3>keyword</h3>
+          <div class="oneFilter">
+            <label for="textFilter" class="filterName">search by name</label>
+            <input type="text" id="textFilter" name="textFilter" value="" th:value="${textFilter}">
+          </div>
+          <div class="oneFilter">
+            <input type="submit" value="search" class="buttonLook filterButton">
+          </div>
+        </form>
+      </div>
+      <div class="col-md-12 allFilters" th:unless="${showFilter}">
+        <a th:href="@{|/artistlist/filter|}">Filter</a>
+      </div>
+    </div>
 
-<ul>
-  <li th:each="artist:${artists}">
-    <a th:href="@{|/artistdetails/${artist.id}|}" th:text="${artist.artistName}">artist name</a>
-  </li>
-</ul>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-12" th:each="artist:${artists}">
+          <a th:href="@{|/artistdetails/${artist.id}|}">
+            <div class="container venueDisplay">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12 venueName">
+                      <p th:text="${artist.artistName}"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div th:replace="~{fragments/footer :: footer}">Footer</div>
 </body>

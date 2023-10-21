@@ -22,8 +22,8 @@
             <div class="col-md-12">
                 <p style="text-align:center" th:text="|${numberOfVenues} venues found|">number of venues found</p>
             </div>
-            <div class="col-md-12 filterButton"  th:if="${showFilter}">
-                <a th:href="@{|/venuelist|}">-</a>
+            <div class="col-md-12 allFilters"  th:if="${showFilter}">
+                <a class="buttonLook filterButton" th:href="@{|/venuelist|}">-</a>
                 <form>
                     <h3>capacity</h3>
                     <div class="oneFilter">
@@ -39,7 +39,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-12 filterButton" th:unless="${showFilter}">
+            <div class="col-md-12 allFilters" th:unless="${showFilter}">
                 <a th:href="@{|/venuelist/filter|}">Filter</a>
             </div>
         </div>
