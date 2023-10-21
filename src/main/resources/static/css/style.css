@@ -48,7 +48,8 @@ nav{
 .hidden{
     visibility: hidden;
 }
-div.venueDisplay
+.venueDisplay
 {
     margin-top: 10px;
+    background-color: darkgrey;
 }

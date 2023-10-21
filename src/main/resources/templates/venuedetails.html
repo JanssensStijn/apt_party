@@ -25,7 +25,7 @@
             <div class="content">
                 <div class="contentFound" th:if="${venue}">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top placeholder" src="" alt="Card image cap">
+                        <img class="card-img-top placeholder" th:src="@{|/img/${venue.getVenueName()}.jpg|}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${venue.getVenueName()}">Card title</h5>
                         </div>
