@@ -55,8 +55,21 @@ public class VenueController {
     @GetMapping({"/venuelist/filter"})
     public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minCapacity) {
         logger.info(String.format("venueListWithFilter -- min = %d", minCapacity));
-        final Iterable<Venue> allVenues = venueRepository.findAll();
-        final long numberOfVenues = venueRepository.count();
+        final Iterable<Venue> allVenues;
+        final long numberOfVenues;
+
+        if(minCapacity == null)
+        {
+            allVenues = venueRepository.findAll();
+            numberOfVenues = venueRepository.count();
+        }
+        else
+        {
+            allVenues = venueRepository.findByCapacityGreaterThanEqual(minCapacity);
+            numberOfVenues = venueRepository.count();
+            //numberOfVenues = venueRepository.countByByCapacityGreaterThanEqual(minCapacity);
+        }
+
         model.addAttribute("numberOfVenues", numberOfVenues);
         model.addAttribute("venues", allVenues);
         model.addAttribute("showFilter", true);
