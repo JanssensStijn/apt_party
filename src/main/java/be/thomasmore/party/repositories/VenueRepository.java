@@ -1,6 +1,7 @@
 package be.thomasmore.party.repositories;
 
 import be.thomasmore.party.model.Venue;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -28,4 +29,8 @@ public interface VenueRepository extends CrudRepository<Venue, Integer> {
     List<Venue> findAllByCapacityLessThanEqual( Integer maxCapacity );
     @Query("SELECT v FROM Venue v WHERE (?1 IS NULL OR v.capacity >= ?1) AND (?2 IS NULL OR v.capacity <= ?2)")
     List<Venue> findAllByCapacityBetween(Integer minCapacity, Integer maxCapacity);
+    @Query("SELECT v FROM Venue v WHERE (?1 IS NULL OR v.capacity >= ?1)" +
+            " AND (?2 IS NULL OR v.capacity <= ?2)" +
+            " AND (?3 IS NULL OR v.distanceFromPublicTransportInKm <= ?3)")
+    List<Venue> filter(Integer minCapacity, Integer maxCapacity, Integer maxDistance);
 }

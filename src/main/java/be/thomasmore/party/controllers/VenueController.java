@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -55,15 +56,16 @@ public class VenueController {
     @GetMapping({"/venuelist/filter"})
     public String venueListWithFilter(Model model,
                                       @RequestParam(required = false) Integer minCapacity,
-                                      @RequestParam(required = false) Integer maxCapacity) {
+                                      @RequestParam(required = false) Integer maxCapacity,
+                                      @RequestParam(required = false) Integer maxDistance) {
 
         logger.info(String.format("venueListWithFilter -- min = %d -- max = %d", minCapacity, maxCapacity));
-        final Iterable<Venue> allVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity);
-        final long numberOfVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity).size();
+        final List<Venue> allVenues = venueRepository.filter(minCapacity,maxCapacity, maxDistance);
 
         model.addAttribute("minCapacityFiltered" , minCapacity);
         model.addAttribute("maxCapacityFiltered" , maxCapacity);
-        model.addAttribute("numberOfVenues", numberOfVenues);
+        model.addAttribute("maxDistanceFiltered" , maxDistance);
+        model.addAttribute("numberOfVenues", allVenues.size());
         model.addAttribute("venues", allVenues);
         model.addAttribute("showFilter", true);
         return "venuelist";
