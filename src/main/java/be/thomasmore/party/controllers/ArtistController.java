@@ -72,6 +72,7 @@ public class ArtistController {
             model.addAttribute("nextId", nextArtistFromDb.get().getId());
             model.addAttribute("prevId", prevArtistFromDb.get().getId());
             model.addAttribute("artist", artistFromDb.get());
+            model.addAttribute("parties", artistFromDb.get().getParties());
         }
 
         return "artistdetails";

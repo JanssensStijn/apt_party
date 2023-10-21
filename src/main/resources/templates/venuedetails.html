@@ -25,7 +25,8 @@
             <div class="content-center">
                 <div class="contentFound " th:if="${venue}">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top placeholder" th:src="@{|/img/${venue.getVenueName()}.jpg|}" alt="Card image cap">
+                        <img class="card-img-top placeholder" th:src="@{|/img/${venue.getVenueName()}.jpg|}"
+                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${venue.getVenueName()}">Card title</h5>
                         </div>
@@ -91,7 +92,8 @@
                                         <div class="col-sm-6">
                                             free parking:
                                         </div>
-                                        <div class="col-sm-6" th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">
+                                        <div class="col-sm-6"
+                                             th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">
                                         </div>
                                     </div>
                                 </div>
@@ -102,14 +104,16 @@
                                         <div class="col-sm-6">
                                             distance to public transport:
                                         </div>
-                                        <div class="col-sm-6" th:text="|${venue.getDistanceFromPublicTransportInKm()} km|">
+                                        <div class="col-sm-6"
+                                             th:text="|${venue.getDistanceFromPublicTransportInKm()} km|">
                                         </div>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                         <div class="card-body">
-                            <a href="#" class="card-link" th:href="@{${venue.getLinkMoreInfo()}}" th:text="${venue.getLinkMoreInfo()}">Another
+                            <a href="#" class="card-link" th:href="@{${venue.getLinkMoreInfo()}}"
+                               th:text="${venue.getLinkMoreInfo()}">Another
                                 link</a>
                         </div>
                     </div>
@@ -122,6 +126,28 @@
         <div class="col-md-1 justify-content-end">
             <a th:href="@{|/venuedetails/${nextId}|}" th:classappend="${nextId == null} ? 'hidden'"
                class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">>>></a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 justify-self-center">
+            <div class="row justify-content-center">
+                <h2>parties at venue:</h2>
+                <div class="col-md-12" th:each="party:${parties}">
+                    <a class="itemLink" th:href="@{|/partydetails/${party.id}|}">
+                        <div class="container itemDisplay">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12 partyName">
+                                            <p th:text="${party.name}"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

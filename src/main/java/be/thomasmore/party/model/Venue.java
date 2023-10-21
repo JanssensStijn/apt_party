@@ -1,7 +1,11 @@
 package be.thomasmore.party.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.Collection;
 
 @Entity
 public class Venue {
@@ -16,6 +20,9 @@ public class Venue {
     private boolean freeParkingAvailable;
     private String city;
     private int distanceFromPublicTransportInKm;
+
+    @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
+    private Collection<Party> parties;
 
     public Venue() {
     }
@@ -123,5 +130,15 @@ public class Venue {
 
     public void setDistanceFromPublicTransportInKm(int distanceFromPublicTransportInKm) {
         this.distanceFromPublicTransportInKm = distanceFromPublicTransportInKm;
+    }
+
+
+
+    public Collection<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(Collection<Party> parties) {
+        this.parties = parties;
     }
 }

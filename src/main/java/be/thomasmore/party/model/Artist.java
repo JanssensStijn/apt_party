@@ -1,8 +1,8 @@
 package be.thomasmore.party.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 public class Artist {
@@ -15,6 +15,9 @@ public class Artist {
     @Column(length=500)
     private String bio;
     private String portfolio;
+    @ManyToMany(mappedBy = "artists",fetch = FetchType.LAZY)
+    private Collection<Party> parties;
+
 
     public int getId() {
         return id;
@@ -62,5 +65,15 @@ public class Artist {
 
     public void setPortfolio(String portfolio) {
         this.portfolio = portfolio;
+    }
+
+
+
+    public Collection<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(Collection<Party> parties) {
+        this.parties = parties;
     }
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venuelist</title>
+    <!-- css en js file inladen voor bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- eigen css file inladen -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}">Header</div>
+<div class="container justify-content-center">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12" th:each="party:${partys}">
+                    <a class="itemLink" th:href="@{|/partydetails/${party.id}|}">
+                        <div class="container itemDisplay">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12 partyName">
+                                            <p th:text="${party.name}"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}">Footer</div>
+</body>
+</html>

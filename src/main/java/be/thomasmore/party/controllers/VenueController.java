@@ -38,6 +38,7 @@ public class VenueController {
             model.addAttribute("nextId", nextVenueFromDb.get().getId());
             model.addAttribute("prevId", prevVenueFromDb.get().getId());
             model.addAttribute("venue", venueFromDb.get());
+            model.addAttribute("parties", venueFromDb.get().getParties());
         }
 
         return "venuedetails";
