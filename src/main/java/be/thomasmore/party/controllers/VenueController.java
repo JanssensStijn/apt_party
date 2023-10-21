@@ -66,10 +66,10 @@ public class VenueController {
         else
         {
             allVenues = venueRepository.findByCapacityGreaterThanEqual(minCapacity);
-            numberOfVenues = venueRepository.count();
+            numberOfVenues = venueRepository.findAllByCapacityGreaterThanEqual(minCapacity).size();
             //numberOfVenues = venueRepository.countByByCapacityGreaterThanEqual(minCapacity);
         }
-
+        model.addAttribute("minCapacityFiltered" , minCapacity);
         model.addAttribute("numberOfVenues", numberOfVenues);
         model.addAttribute("venues", allVenues);
         model.addAttribute("showFilter", true);
