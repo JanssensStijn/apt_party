@@ -19,7 +19,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 filtering" th:if="${showFilter}">
-            <p>is het zichtbaar of niet</p>
+            <a th:href="@{|/venuelist|}">-</a>
+            <p>hier komen filters</p>
+        </div>
+        <div class="col-md-5 filtering" th:unless="${showFilter}">
+            <a th:href="@{|/venuelist/filter|}">Filter</a>
         </div>
         <div class="col-md-7">
             <div class="row">
