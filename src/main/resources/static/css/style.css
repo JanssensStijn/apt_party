@@ -48,8 +48,29 @@ nav{
 .hidden{
     visibility: hidden;
 }
-.venueDisplay
+
+.venueDisplay, .filterButton
 {
     margin-top: 10px;
     background-color: darkgrey;
+    text-align: center;
+    color: black;
+}
+.venueName
+{
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}
+.venueCapacity
+{
+    font-size: medium;
+    color: black;
+}
+
+.venueName p{
+    margin: 10px 0px 0px 0px;
+}
+.venueCapacity p{
+    margin: 5px 0px 10px 0px;
 }

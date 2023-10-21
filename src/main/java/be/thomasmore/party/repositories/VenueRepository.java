@@ -19,4 +19,5 @@ public interface VenueRepository extends CrudRepository<Venue, Integer> {
 
     Optional<Venue> findFirstByOrderByIdDesc();
     Optional<Venue> findFirstByOrderByIdAsc();
+
 }
