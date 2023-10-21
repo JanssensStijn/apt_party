@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -50,9 +51,10 @@ public class VenueController {
         model.addAttribute("showFilter", false);
         return "venuelist";
     }
+
     @GetMapping({"/venuelist/filter"})
-    public String venueListWithFilter(Model model) {
-        logger.info("venueListWithFilter");
+    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minCapacity) {
+        logger.info(String.format("venueListWithFilter -- min = %d", minCapacity));
         final Iterable<Venue> allVenues = venueRepository.findAll();
         final long numberOfVenues = venueRepository.count();
         model.addAttribute("numberOfVenues", numberOfVenues);
