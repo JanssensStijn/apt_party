@@ -1,7 +1,9 @@
 package be.thomasmore.party.repositories;
 
 import be.thomasmore.party.model.Venue;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,12 +21,14 @@ public interface VenueRepository extends CrudRepository<Venue, Integer> {
     Optional<Venue> findFirstByOrderByIdDesc();
     Optional<Venue> findFirstByOrderByIdAsc();
 
-    Iterable<Venue> findByCapacityLessThanEqual(Integer maxCapacity);
-    Iterable<Venue> findByCapacityGreaterThanEqual(Integer minCapacity);
-    Iterable<Venue> findByCapacityBetween(Integer minCapacity, Integer maxCapacity);
+    //Iterable<Venue> findByCapacityLessThanEqual(Integer maxCapacity);
+    //Iterable<Venue> findByCapacityGreaterThanEqual(Integer minCapacity);
+    //Iterable<Venue> findByCapacityBetween(Integer minCapacity, Integer maxCapacity);
 
-
-    List<Venue> findAllByCapacityGreaterThanEqual(Integer minCapacity);
-    List<Venue> findAllByCapacityLessThanEqual(Integer maxCapacity);
+    @Query("SELECT v FROM Venue v WHERE ?1 IS NULL OR v.capacity >= ?1")
+    List<Venue> findAllByCapacityGreaterThanEqual( Integer minCapacity );
+    @Query("SELECT v FROM Venue v WHERE ?1 IS NULL OR v.capacity <= ?1")
+    List<Venue> findAllByCapacityLessThanEqual( Integer maxCapacity );
+    @Query("SELECT v FROM Venue v WHERE v.capacity BETWEEN ?1 AND ?2")
     List<Venue> findAllByCapacityBetween(Integer minCapacity, Integer maxCapacity);
 }

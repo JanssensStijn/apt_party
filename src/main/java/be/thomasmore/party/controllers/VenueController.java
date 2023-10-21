@@ -63,17 +63,17 @@ public class VenueController {
 
         if(minCapacity != null && maxCapacity == null)
         {
-            allVenues = venueRepository.findByCapacityGreaterThanEqual(minCapacity);
+            allVenues = venueRepository.findAllByCapacityGreaterThanEqual(minCapacity);
             numberOfVenues = venueRepository.findAllByCapacityGreaterThanEqual(minCapacity).size();
         }
         else if(minCapacity == null && maxCapacity != null)
         {
-            allVenues = venueRepository.findByCapacityLessThanEqual(maxCapacity);
+            allVenues = venueRepository.findAllByCapacityLessThanEqual(maxCapacity);
             numberOfVenues = venueRepository.findAllByCapacityLessThanEqual(maxCapacity).size();
         }
         else if(minCapacity != null && maxCapacity != null)
         {
-            allVenues = venueRepository.findByCapacityBetween(minCapacity,maxCapacity);
+            allVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity);
             numberOfVenues = venueRepository.findAllByCapacityBetween(minCapacity,maxCapacity).size();
         }
         else{
