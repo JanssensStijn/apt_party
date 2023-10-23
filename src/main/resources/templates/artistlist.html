@@ -23,7 +23,7 @@
         <p style="text-align:center" th:text="|${numberOfArtists} artists found|">number of artists found</p>
       </div>
       <div class="col-md-12 allFilters"  th:if="${showFilter}">
-        <a class="buttonLook filterButton" th:href="@{/artistlist}">-</a>
+        <a class="buttonLook filterButton" th:href="@{/artistlist}">Hide Filter</a>
         <form>
           <h3>keyword</h3>
           <div class="oneFilter">
@@ -36,24 +36,15 @@
         </form>
       </div>
       <div class="col-md-12 allFilters" th:unless="${showFilter}">
-        <a th:href="@{|/artistlist/filter|}">Filter</a>
+        <a th:href="@{|/artistlist/filter|}">Show Filter</a>
       </div>
     </div>
 
     <div class="col-md-5">
       <div class="row">
         <div class="col-md-12" th:each="artist:${artists}">
-          <a th:href="@{|/artistdetails/${artist.id}|}">
-            <div class="container venueDisplay">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="row">
-                    <div class="col-md-12 venueName">
-                      <p th:text="${artist.artistName}"></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <a class="itemLink" th:href="@{|/artistdetails/${artist.id}|}">
+            <div class="container itemDisplay artistName" th:text="${artist.artistName}">
             </div>
           </a>
         </div>

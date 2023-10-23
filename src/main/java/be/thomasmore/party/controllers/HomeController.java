@@ -20,11 +20,11 @@ public class HomeController {
     @GetMapping("/about")
     public String about(Model model) {
         String myName = "Stijn";
-        String myStreet = "somewhere";
-        String myCity = "a town";
+        String myCourse = "Graduaat Programmeren";
+        String mySchool = "Thomas More - De Nayer";
         model.addAttribute("myName", myName);
-        model.addAttribute("myStreet", myStreet);
-        model.addAttribute("myCity", myCity);
+        model.addAttribute("myCourse", myCourse);
+        model.addAttribute("mySchool", mySchool);
         return "about";
     }
 

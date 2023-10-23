@@ -42,7 +42,6 @@ nav{
     height:150px;
 }
 
-
 .activeFilter{
     background-color: red;
 }
@@ -53,14 +52,28 @@ nav{
     visibility: hidden;
 }
 
-.venueDisplay, .allFilters
+.itemDisplay, .allFilters
 {
     margin-top: 10px;
     background-color: darkgrey;
     text-align: center;
     color: black;
 }
-.venueName
+.allFilters{
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.itemLink:hover{
+    text-decoration: none;
+}
+.itemDisplay:hover {
+    background-color: #007bff;
+}
+.artistName{
+    padding: 5px;
+}
+.venueName, .artistName
 {
     font-size: large;
     font-weight: bold;
@@ -70,6 +83,7 @@ nav{
 {
     font-size: medium;
     color: black;
+    font-weight: normal;
 }
 
 .venueName p{
@@ -79,6 +93,6 @@ nav{
     margin: 5px 0px 10px 0px;
 }
 
-.oneFilter{
-
+.filterButton{
+ width: 100%;
 }

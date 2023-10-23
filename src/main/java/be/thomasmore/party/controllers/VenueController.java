@@ -58,15 +58,19 @@ public class VenueController {
                                       @RequestParam(required = false) Integer minCapacity,
                                       @RequestParam(required = false) Integer maxCapacity,
                                       @RequestParam(required = false) Integer maxDistance,
-                                      @RequestParam(required = false) Boolean isFoodProvided) {
+                                      @RequestParam(required = false) Boolean isFoodProvided,
+                                      @RequestParam(required = false) Boolean isIndoor,
+                                      @RequestParam(required = false) Boolean isOutdoor) {
 
         logger.info(String.format("venueListWithFilter -- min = %d -- max = %d", minCapacity, maxCapacity) + "food: " + isFoodProvided);
-        final List<Venue> allVenues = venueRepository.filter(minCapacity,maxCapacity, maxDistance, isFoodProvided);
+        final List<Venue> allVenues = venueRepository.findByFilter(minCapacity,maxCapacity, maxDistance, isFoodProvided, isIndoor, isOutdoor);
 
         model.addAttribute("minCapacityFiltered" , minCapacity);
         model.addAttribute("maxCapacityFiltered" , maxCapacity);
         model.addAttribute("maxDistanceFiltered" , maxDistance);
         model.addAttribute("isFoodProvidedFiltered", isFoodProvided);
+        model.addAttribute("isIndoorFiltered", isIndoor);
+        model.addAttribute("isOutdoorFiltered", isOutdoor);
         model.addAttribute("numberOfVenues" , allVenues.size());
         model.addAttribute("venues", allVenues);
         model.addAttribute("showFilter", true);

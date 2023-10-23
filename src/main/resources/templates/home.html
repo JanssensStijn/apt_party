@@ -15,8 +15,10 @@
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}">Header</div>
+<div class="text-center">
+    <img  th:src="@{/img/party.jpg}" style=" width: 100%; height: auto; max-width: 800px; max-height: 500px" />
+</div>
 
-<img th:src="@{/img/party.jpg}" style="max-height: 200px; "/>
 
 <div th:replace="~{fragments/footer :: footer}">Footer</div>
 </body>

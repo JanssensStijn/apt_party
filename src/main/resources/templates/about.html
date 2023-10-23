@@ -18,12 +18,12 @@
 
 <ol>
     <li th:text="${myName}"></li>
-    <li th:text="${myStreet}"></li>
-    <li th:text="${myCity}"></li>
+    <li th:text="${myCourse}"></li>
+    <li th:text="${mySchool}"></li>
 </ol>
 
 <!-- <p th:text="'ik ben ' + ${myName} +' en woon in de'+ ${myStreet} + ',te ' + ${myCity}">appName</p> -->
-<p th:text="|ik ben ${myName} en woon in de ${myStreet}, te ${myCity}|">appName</p>
+<p th:text="|ik ben ${myName} en student ${myCourse}, aan ${mySchool}|">appName</p>
 <!--dit is hetzelfde als de regel erboven maar makelijker leesbaar-->
 
 <a th:href="@{/home}">klik hier om naar "home" te gaan</a>
