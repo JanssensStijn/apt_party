@@ -93,6 +93,26 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="list-group-item" th:if="${!animals.isEmpty()}">
+                                <div class="container">
+                                    <h2>Who's going?</h2>
+                                    <div class="col-md-12" th:each="animal:${animals}">
+                                        <a class="itemLink" th:href="@{|/animaldetails/${animal.id}|}">
+                                            <div class="container itemDisplay">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12 partyName">
+                                                                <p th:text="${animal.name}"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>

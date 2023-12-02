@@ -202,3 +202,17 @@ INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (4, 5);
 --------------------------------------------------------------------------------------------------------
 
 INSERT INTO "PUBLIC"."CLIENT" (ID, NAME, NR_OF_ORDERS, TOTAL_AMOUNT,DISCOUNT_TAKEN)VALUES(1, 'Stijn', 88, 2654, 1);
+
+--------------------------------------------------------------------------------------------------------
+
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO) VALUES (1, 'JAN','Antwerpen', 'feest graag op de parking');
+INSERT INTO ANIMAL (ID, NAME,  CITY, BIO) VALUES (2, 'VOS','Wolfsdonk', 'feest graag in het bos');
+
+--------------------------------------------------------------------------------------------------------
+
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, 1);
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, 3);
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, 4);
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, 2);
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, 3);
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, 4);

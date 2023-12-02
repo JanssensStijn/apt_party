@@ -17,11 +17,8 @@ public class Animal {
     @ManyToMany
     private Collection<Party> parties;
 
-    public Animal(int id, String name, String city, String bio) {
-        this.id = id;
-        this.name = name;
-        this.city = city;
-        this.bio = bio;
+    public Animal() {
+
     }
 
     public int getId() {
@@ -54,5 +51,13 @@ public class Animal {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public Collection<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(Collection<Party> parties) {
+        this.parties = parties;
     }
 }

@@ -40,6 +40,7 @@ public class PartyController {
             model.addAttribute("prevId", prevpartyFromDb.get().getId());
             model.addAttribute("party", partyFromDb.get());
             model.addAttribute("artists", partyFromDb.get().getArtists());
+            model.addAttribute("animals", partyFromDb.get().getAnimals());
         }
 
         return "partydetails";
