@@ -22,66 +22,6 @@
         <div class="col-md-6 d-flex justify-content-center">
             <div class="content-center">
                 <div class="contentFound " th:if="${party}" th:object="${party}">
-                    <form>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h1 th:text="*{name}">
-                                </h1>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="container"}>
-                                        <div class="row">
-                                            <h3>
-                                                <span th:text="*{date}">date</span>
-                                                in
-                                                <a th:href="@{|/venuedetails/*{venue.id}|}" th:text="*{venue.venueName}">venue</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item" th:if="*{venue != null}">
-                                    <div class="container"}>
-                                        <div class="row" >
-                                            <div class="col-sm-6">
-                                                where:
-                                            </div>
-                                            <div class="col-sm-6"  th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km from public transport)|"></div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="container" }>
-                                        <div class="row">
-                                            <div class="col-sm-6" th:if="*{priceInEur != null}">
-                                                price:
-                                            </div>
-                                            <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale), ' + party.priceInEur + ' EUR'}"></div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item" th:if="*{extraInfo != null}">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                Extra info:
-                                            </div>
-                                            <div class="col-sm-6" th:text="*{extraInfo}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-            <div class="content-center">
-                <div class="contentFound " th:if="${party}" th:object="${party}">
                     <form th:action="@{|/admin/partyedit/*{id}|}" method="post">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">

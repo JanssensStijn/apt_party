@@ -27,7 +27,7 @@ public class PartyAdminController {
         return null;
     }
 
-    @GetMapping({"/partyedit/{id}","/partyedit", "/partyedit/"})
+    @GetMapping({"/partyedit/{id}"})
     public String partyEdit(Model model, @PathVariable (required = false) Integer id) {
         logger.info("findParty " + id);
         return "admin/partyedit";
@@ -37,7 +37,7 @@ public class PartyAdminController {
     public String partyEditPost(@PathVariable int id, Party party){
         logger.info("findParty " + id + " -- new name=" + party.getName());
         partyRepository.save(party);
-        return "admin/partyedit";
+        return "redirect:/partydetails/" + id;
     }
 
 }
