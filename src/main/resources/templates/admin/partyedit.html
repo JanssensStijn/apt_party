@@ -57,7 +57,7 @@
                                             <div class="col-sm-6" th:if="*{priceInEur != null}">
                                                 price:
                                             </div>
-                                            <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale) ' + party.priceInEur + ' EUR'}"></div>
+                                            <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale), ' + party.priceInEur + ' EUR'}"></div>
 
                                         </div>
                                     </div>
@@ -116,11 +116,11 @@
                                 <li class="list-group-item">
                                     <div class="container" }>
                                         <div class="row">
-                                            <div class="col-sm-6" th:if="*{priceInEur != null}">
-                                                price:
-                                            </div>
-                                            <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale) ' + party.priceInEur + ' EUR'}"></div>
 
+                                            <label for="partyPrice" >price:</label>
+                                            <input id="partyPrice" th:field="*{priceInEur}" style="width: 250px">
+                                            <label for="partyPresalePrice" >presale price:</label>
+                                            <input id="partyPresalePrice" th:field="*{pricePresaleInEur}" style="width: 250px">
                                         </div>
                                     </div>
                                 </li>
@@ -130,8 +130,9 @@
                                             <div class="col-sm-6">
                                                 Extra info:
                                             </div>
-                                            <div class="col-sm-6" th:text="*{extraInfo}">
-                                            </div>
+
+                                            <label for="partyExtraInfo" >presale price:</label>
+                                            <textarea id="partyExtraInfo" th:field="*{extraInfo}" style="width: 250px"></textarea>
                                         </div>
                                     </div>
                                 </li>

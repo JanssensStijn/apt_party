@@ -68,7 +68,7 @@
                                         <div class="col-sm-6" th:if="${party.priceInEur != null}">
                                             price:
                                         </div>
-                                        <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale) ' + party.priceInEur + ' EUR'}"></div>
+                                        <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale), ' + party.priceInEur + ' EUR'}"></div>
 
                                     </div>
                                 </div>
