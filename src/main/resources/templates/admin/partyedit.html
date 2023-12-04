@@ -21,11 +21,11 @@
     <div class="row">
         <div class="col-md-6 d-flex justify-content-center">
             <div class="content-center">
-                <div class="contentFound " th:if="${party}">
+                <div class="contentFound " th:if="${party}" th:object="${party}">
                     <form>
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
-                                <h1 th:text="${party.name}">
+                                <h1 th:text="*{name}">
                                 </h1>
                             </div>
                             <ul class="list-group list-group-flush">
@@ -33,20 +33,20 @@
                                     <div class="container"}>
                                         <div class="row">
                                             <h3>
-                                                <span th:text="${party.date}">date</span>
+                                                <span th:text="*{date}">date</span>
                                                 in
-                                                <a th:href="@{|/venuedetails/${party.venue.id}|}" th:text="${party.venue.venueName}">venue</a>
+                                                <a th:href="@{|/venuedetails/*{venue.id}|}" th:text="*{venue.venueName}">venue</a>
                                             </h3>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="list-group-item" th:if="${party.venue != null}">
+                                <li class="list-group-item" th:if="*{venue != null}">
                                     <div class="container"}>
                                         <div class="row" >
                                             <div class="col-sm-6">
                                                 where:
                                             </div>
-                                            <div class="col-sm-6"  th:text="|${party.venue.city} (${party.venue.distanceFromPublicTransportInKm} km from public transport)|"></div>
+                                            <div class="col-sm-6"  th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km from public transport)|"></div>
 
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                                 <li class="list-group-item">
                                     <div class="container" }>
                                         <div class="row">
-                                            <div class="col-sm-6" th:if="${party.priceInEur != null}">
+                                            <div class="col-sm-6" th:if="*{priceInEur != null}">
                                                 price:
                                             </div>
                                             <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale) ' + party.priceInEur + ' EUR'}"></div>
@@ -62,13 +62,13 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="list-group-item" th:if="${party.extraInfo != null}">
+                                <li class="list-group-item" th:if="*{extraInfo != null}">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 Extra info:
                                             </div>
-                                            <div class="col-sm-6" th:text="${party.extraInfo}">
+                                            <div class="col-sm-6" th:text="*{extraInfo}">
                                             </div>
                                         </div>
                                     </div>
@@ -81,13 +81,13 @@
         </div>
         <div class="col-md-6 d-flex justify-content-center">
             <div class="content-center">
-                <div class="contentFound " th:if="${party}">
+                <div class="contentFound " th:if="${party}" th:object="${party}">
                     <form>
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h1>
-                                    <label for="partyName" ></label>
-                                    <input type="text" id="partyName" name="partyName" th:value="${party.name}" style="width: 250px">
+                                    <label for="partyName" >name:</label>
+                                    <input id="partyName" th:field="*{name}" style="width: 250px">
                                 </h1>
                             </div>
                             <ul class="list-group list-group-flush">
@@ -95,20 +95,20 @@
                                     <div class="container"}>
                                         <div class="row">
                                             <h3>
-                                                <span th:text="${party.date}">date</span>
+                                                <span th:text="*{date}">date</span>
                                                 in
-                                                <a th:href="@{|/venuedetails/${party.venue.id}|}" th:text="${party.venue.venueName}">venue</a>
+                                                <a th:href="@{|/venuedetails/*{venue.id}|}" th:text="*{venue.venueName}">venue</a>
                                             </h3>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="list-group-item" th:if="${party.venue != null}">
+                                <li class="list-group-item" th:if="*{venue != null}">
                                     <div class="container"}>
                                         <div class="row" >
                                             <div class="col-sm-6">
                                                 where:
                                             </div>
-                                            <div class="col-sm-6"  th:text="|${party.venue.city} (${party.venue.distanceFromPublicTransportInKm} km from public transport)|"></div>
+                                            <div class="col-sm-6"  th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km from public transport)|"></div>
 
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@
                                 <li class="list-group-item">
                                     <div class="container" }>
                                         <div class="row">
-                                            <div class="col-sm-6" th:if="${party.priceInEur != null}">
+                                            <div class="col-sm-6" th:if="*{priceInEur != null}">
                                                 price:
                                             </div>
                                             <div class="col-sm-6" th:text="${party.priceInEur == null ? 'free party' : party.pricePresaleInEur + ' EUR (presale) ' + party.priceInEur + ' EUR'}"></div>
@@ -124,13 +124,13 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="list-group-item" th:if="${party.extraInfo != null}">
+                                <li class="list-group-item" th:if="*{extraInfo != null}">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 Extra info:
                                             </div>
-                                            <div class="col-sm-6" th:text="${party.extraInfo}">
+                                            <div class="col-sm-6" th:text="*{extraInfo}">
                                             </div>
                                         </div>
                                     </div>
