@@ -84,6 +84,17 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="list-group-item" th:if="${party.doors != null}">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            Doors:
+                                        </div>
+                                        <div class="col-sm-6" th:text="${#dates.format(party.doors, 'HH:mm')}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li class="list-group-item" th:if="${!artists.isEmpty()}">
                                 <div class="container">
                                     <h2>line-up:</h2>

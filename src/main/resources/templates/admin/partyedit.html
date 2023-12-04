@@ -77,6 +77,17 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li class="list-group-item" th:if="${party.doors != null}">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                Doors:
+                                            </div>
+                                            <label for="partyDoors" >date <i>(HH:mm)</i>:</label>
+                                            <input id="partyDoors" th:field="*{doors}" style="width: 250px"><br>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <input type="submit" value="SAVE" class="buttonLook filterButton">
