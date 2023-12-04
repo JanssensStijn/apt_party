@@ -44,7 +44,7 @@
                                 <div class="container"}>
                                     <div class="row">
                                         <h3>
-                                            <span th:text="${party.date}">date</span>
+                                            <span th:text="${#dates.format(party.date, 'dd-MM-yyyy')}">date</span>
                                             in
                                             <a th:href="@{|/venuedetails/${party.venue.id}|}" th:text="${party.venue.venueName}">venue</a>
                                         </h3>

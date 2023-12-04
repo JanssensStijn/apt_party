@@ -35,7 +35,7 @@
                                     <div class="container"}>
                                         <div class="row">
                                             <h3>
-                                                <label for="partyDate" >date <i>(yyyy-mm-dd)</i>:</label>
+                                                <label for="partyDate" >date <i>(dd-mm-yyyy)</i>:</label>
                                                 <input id="partyDate" th:field="*{date}" style="width: 250px"><br>
                                                 in<br>
                                                 <a th:href="@{|/venuedetails/*{venue.id}|}" th:text="*{venue.venueName}">venue</a>
