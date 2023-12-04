@@ -36,6 +36,7 @@ public class PartyAdminController {
     @PostMapping("/partyedit/{id}")
     public String partyEditPost(@PathVariable int id, Party party){
         logger.info("findParty " + id + " -- new name=" + party.getName());
+        partyRepository.save(party);
         return "admin/partyedit";
     }
 
