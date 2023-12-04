@@ -22,23 +22,18 @@ public class PartyAdminController {
 
     private Logger logger = LoggerFactory.getLogger(PartyAdminController.class);
 
+    @ModelAttribute("party")
+    public Party findParty(@PathVariable(required = false) Integer id){
+        logger.info("findParty " + id);
+        Optional<Party> optionalParty = partyRepository.findById(id);
+        if(optionalParty.isPresent()) return optionalParty.get();
+        return null;
+    }
+
     @GetMapping({"/partyedit/{id}","/partyedit", "/partyedit/"})
-    public String animaldetails(Model model, @PathVariable (required = false) Integer id) {
-        if (id == null) return "partydetails";
-        Optional<Party> partyFromDb = partyRepository.findById(id);
-
-        if (partyFromDb.isPresent()){
-            Optional<Party> nextpartyFromDb = partyRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
-            if (nextpartyFromDb.isEmpty()) //if no Party id is higher, get the Party with the lowest id
-                nextpartyFromDb = partyRepository.findFirstByOrderByIdAsc();
-            Optional<Party> prevpartyFromDb = partyRepository.findFirstByIdLessThanOrderByIdDesc(id);
-            if (prevpartyFromDb.isEmpty()) //if no Party id is lower, get the Party with the highest id
-                prevpartyFromDb = partyRepository.findFirstByOrderByIdDesc();
-
-            model.addAttribute("party", partyFromDb.get());
-        }
-
+    public String partyEdit(Model model, @PathVariable (required = false) Integer id) {
+        logger.info("findParty " + id);
         return "admin/partyedit";
     }
-    @ModelAttribute("party")
+
 }
