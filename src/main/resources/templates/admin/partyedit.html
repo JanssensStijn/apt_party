@@ -82,7 +82,7 @@
         <div class="col-md-6 d-flex justify-content-center">
             <div class="content-center">
                 <div class="contentFound " th:if="${party}" th:object="${party}">
-                    <form>
+                    <form th:action="@{|/admin/partyedit/*{id}|}" method="post">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h1>
@@ -152,8 +152,7 @@
 <div class="container-lg text-center">
     <div class="row">
         <div class="col-md-12 justify-content-center">
-            <a th:href="@{|/partydetails/${party.id}|}"
-               class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">CANCEL</a>
+            <a th:href="@{|/partydetails/${party.id}|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">CANCEL</a>
         </div>
     </div>
 </div>

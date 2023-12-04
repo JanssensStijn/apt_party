@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -32,6 +29,12 @@ public class PartyAdminController {
 
     @GetMapping({"/partyedit/{id}","/partyedit", "/partyedit/"})
     public String partyEdit(Model model, @PathVariable (required = false) Integer id) {
+        logger.info("findParty " + id);
+        return "admin/partyedit";
+    }
+
+    @PostMapping("/partyedit/{id}")
+    public String partyEditPost(@PathVariable int id){
         logger.info("findParty " + id);
         return "admin/partyedit";
     }
