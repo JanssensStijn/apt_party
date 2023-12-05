@@ -18,7 +18,7 @@
 <div th:replace="~{fragments/header :: header}">Header</div>
 <div class="container justify-content-center">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="row">
                 <div class="col-md-12" th:each="party:${partys}">
                     <a class="itemLink" th:href="@{|/partydetails/${party.id}|}">
@@ -36,6 +36,9 @@
                     </a>
                 </div>
             </div>
+        </div>
+        <div class="col-md-2 justify-content-end">
+            <a th:href="@{|/admin/partynew|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">NEW</a>
         </div>
     </div>
 </div>
