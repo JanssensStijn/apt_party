@@ -159,45 +159,20 @@ KdG TD ...');
 
 --------------------------------------------------------------------------------------------------------
 
-INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
- venue_Id)
-VALUES
-    (1, 'Big Spring Party', 6, 10, '1 cocktail included',
-     '2021-03-21', '10:00', 1);
-INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
- venue_Id)
-VALUES
-    (2, 'Liberty 2021', 4, 6, 'free vestiaire, viplounge',
-     '2021-04-3', '22:00', 2);
-INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
- venue_Id)
-VALUES
-    (3, 'Uppercuts', null, null, null,
-     '2021-03-14', '21:00', 4);
-INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
- venue_Id)
-VALUES
-    (4, 'Zoetzuur', null, null, 'Zoete house / Zure techno',
-     '2021-03-21', '21:00', 4);
-INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
- venue_Id)
-VALUES
-    (5, 'Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
-     '2020-03-28', '21:00', 4);
+INSERT INTO PARTY(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id) VALUES ('Big Spring Party', 6, 10, '1 cocktail included','2021-03-21', '10:00', 1);
+INSERT INTO PARTY(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id) VALUES ('Liberty 2021', 4, 6, 'free vestiaire, viplounge', '2021-04-3', '22:00', 2);
+INSERT INTO PARTY(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id) VALUES ('Uppercuts', null, null, null, '2021-03-14', '21:00', 4);
+INSERT INTO PARTY(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id) VALUES ('Zoetzuur', null, null, 'Zoete house / Zure techno', '2021-03-21', '21:00', 4);
+INSERT INTO PARTY(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id) VALUES ('Oldies but Goldies', null, null, 'afterparty@home van THE BOX!', '2020-03-28', '21:00', 4);
 
 --------------------------------------------------------------------------------------------------------
 
-INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (1, 1);
-INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (1, 2);
-INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (2, 2);
-INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 3);
-INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 5);
-INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (4, 5);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (select id from party where name = 'Big Spring Party', 1);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (select id from party where name = 'Big Spring Party', 2);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (select id from party where name = 'Liberty 2021', 2);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (select id from party where name = 'Uppercuts', 3);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (select id from party where name = 'Uppercuts', 5);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (select id from party where name = 'Zoetzuur', 5);
 
 --------------------------------------------------------------------------------------------------------
 
@@ -210,9 +185,9 @@ INSERT INTO ANIMAL (ID, NAME,  CITY, BIO) VALUES (2, 'VOS','Wolfsdonk', 'feest g
 
 --------------------------------------------------------------------------------------------------------
 
-INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, 1);
-INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, 3);
-INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, 4);
-INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, 2);
-INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, 3);
-INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, 4);
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, select id from party where name = 'Big Spring Party');
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, select id from party where name = 'Uppercuts');
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, select id from party where name = 'Zoetzuur');
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, select id from party where name = 'Liberty 2021');
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, select id from party where name = 'Uppercuts');
+INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, select id from party where name = 'Zoetzuur');
