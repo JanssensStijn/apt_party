@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partydetails</title>
+    <!-- css en js file inladen voor bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- eigen css file inladen -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}">Header</div>
+
+<div class="container-lg text-center">
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-center">
+            <div class="content-center">
+                <div>
+                    <form th:action="@{|/admin/partynew|}" method="post" th:object="${party}">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h1>
+                                    <label for="partyName" >name:</label>
+                                    <input id="partyName" th:field="*{name}" style="width: 250px">
+                                </h1>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="container"}>
+                                        <div class="row">
+                                            <h3>
+                                                <label for="partyDate" >date <i>(dd-mm-yyyy)</i>:</label>
+                                                <input id="partyDate" th:field="*{date}" style="width: 250px"><br>
+                                                in<br>
+                                                <label for="partyVenue" >venue:</label>
+                                                <select id="partyVenue" th:field="*{venue}">
+                                                    <option th:each="v : ${venues}" th:value="${v.id}" th:text="${v.venueName}"  th:selected="*{venue}"></option>
+                                                </select>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" th:if="*{venue != null}">
+                                    <div class="container"}>
+                                        <div class="row" >
+                                            <div class="col-sm-6">
+                                                where:
+                                            </div>
+                                            <div class="col-sm-6"  th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km from public transport)|"></div>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="container" }>
+                                        <div class="row">
+
+                                            <label for="partyPrice" >price:</label>
+                                            <input id="partyPrice" th:field="*{priceInEur}" style="width: 250px">
+                                            <label for="partyPresalePrice" >presale price:</label>
+                                            <input id="partyPresalePrice" th:field="*{pricePresaleInEur}" style="width: 250px">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" th:if="*{extraInfo != null}">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                Extra info:
+                                            </div>
+
+                                            <label for="partyExtraInfo" >presale price:</label>
+                                            <textarea id="partyExtraInfo" th:field="*{extraInfo}" style="width: 250px"></textarea>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" th:if="${party.doors != null}">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                Doors:
+                                            </div>
+                                            <label for="partyDoors" >date <i>(HH:mm)</i>:</label>
+                                            <input id="partyDoors" th:field="*{doors}" style="width: 250px"><br>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="submit" value="CREATE" class="buttonLook filterButton">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-lg text-center">
+    <div class="row">
+        <div class="col-md-12 justify-content-center">
+            <a th:href="@{|/partylist|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">CANCEL</a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}">Footer</div>
+</body>
+</html>
