@@ -57,4 +57,10 @@ public class PartyAdminController {
         return "admin/partynew";
     }
 
+    @PostMapping("/partynew")
+    public String partyNewPost(Party party){
+        Party newParty = partyRepository.save(party);
+        return "redirect:/partydetails/" + newParty.getId();
+    }
+
 }
