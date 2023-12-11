@@ -22,12 +22,14 @@
         <div class="col-md-6 d-flex justify-content-center">
             <div class="content-center">
                 <div>
+
                     <form th:action="@{|/admin/partynew|}" method="post" th:object="${party}">
+                        <div class="error" th:if="${#fields.hasErrors('*')}">ERROR - data is not saved</div>
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h1>
                                     <label for="partyName" >name:</label>
-                                    <input id="partyName" th:field="*{name}" style="width: 250px">
+                                    <input id="partyName" th:field="*{name}" style="width: 250px" th:errorclass="fieldError">
                                 </h1>
                             </div>
                             <ul class="list-group list-group-flush">
@@ -36,24 +38,13 @@
                                         <div class="row">
                                             <h3>
                                                 <label for="partyDate" >date <i>(dd-mm-yyyy)</i>:</label>
-                                                <input id="partyDate" th:field="*{date}" style="width: 250px"><br>
+                                                <input id="partyDate" th:field="*{date}" style="width: 250px" th:errorclass="fieldError"><br>
                                                 in<br>
                                                 <label for="partyVenue" >venue:</label>
-                                                <select id="partyVenue" th:field="*{venue}">
+                                                <select id="partyVenue" th:field="*{venue}" th:errorclass="fieldError">
                                                     <option th:each="v : ${venues}" th:value="${v.id}" th:text="${v.venueName}"  th:selected="*{venue}"></option>
                                                 </select>
                                             </h3>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item" th:if="*{venue != null}">
-                                    <div class="container"}>
-                                        <div class="row" >
-                                            <div class="col-sm-6">
-                                                where:
-                                            </div>
-                                            <div class="col-sm-6"  th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km from public transport)|"></div>
-
                                         </div>
                                     </div>
                                 </li>
@@ -68,7 +59,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="list-group-item" th:if="*{extraInfo != null}">
+                                <li class="list-group-item">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-6">
@@ -80,14 +71,14 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="list-group-item" th:if="${party.doors != null}">
+                                <li class="list-group-item">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 Doors:
                                             </div>
                                             <label for="partyDoors" >date <i>(HH:mm)</i>:</label>
-                                            <input id="partyDoors" th:field="*{doors}" style="width: 250px"><br>
+                                            <input id="partyDoors" th:field="*{doors}" style="width: 250px" th:errorclass="fieldError"><br>
                                         </div>
                                     </div>
                                 </li>
