@@ -1,7 +1,9 @@
 package be.thomasmore.party.controllers;
 
+import be.thomasmore.party.model.Artist;
 import be.thomasmore.party.model.Party;
 import be.thomasmore.party.model.Venue;
+import be.thomasmore.party.repositories.ArtistRepository;
 import be.thomasmore.party.repositories.PartyRepository;
 import be.thomasmore.party.repositories.VenueRepository;
 import jakarta.validation.Valid;
@@ -24,6 +26,8 @@ public class PartyAdminController {
     private PartyRepository partyRepository;
     @Autowired
     private VenueRepository venueRepository;
+    @Autowired
+    private ArtistRepository artistRepository;
 
     private Logger logger = LoggerFactory.getLogger(PartyAdminController.class);
 
@@ -40,6 +44,8 @@ public class PartyAdminController {
     public String partyEdit(Model model, @PathVariable (required = false) Integer id) {
         List<Venue> optionalVenues = (List<Venue>) venueRepository.findAll();
         if(!optionalVenues.isEmpty()) model.addAttribute("venues", optionalVenues);
+        List<Artist> optionalArtists = (List<Artist>) artistRepository.findAll();
+        if(!optionalArtists.isEmpty()) model.addAttribute("artists", optionalArtists);
         return "admin/partyedit";
     }
 
@@ -51,6 +57,7 @@ public class PartyAdminController {
         //logger.info("findParty " + id + " -- new name=" + party.getName());
         if(bindingResult.hasErrors()){
             model.addAttribute("venues", venueRepository.findAll());
+            model.addAttribute("artists", artistRepository.findAll());
             return "admin/partyedit";
         }
         partyRepository.save(party);
@@ -61,6 +68,8 @@ public class PartyAdminController {
     public String partyNew(Model model) {
         List<Venue> optionalVenues = (List<Venue>) venueRepository.findAll();
         if(!optionalVenues.isEmpty()) model.addAttribute("venues", optionalVenues);
+        List<Artist> optionalArtists = (List<Artist>) artistRepository.findAll();
+        if(!optionalArtists.isEmpty()) model.addAttribute("artists", optionalArtists);
         return "admin/partynew";
     }
 
@@ -70,6 +79,7 @@ public class PartyAdminController {
                                BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             model.addAttribute("venues", venueRepository.findAll());
+            model.addAttribute("artists", artistRepository.findAll());
             return "admin/partynew";
         }
         Party newParty = partyRepository.save(party);

@@ -92,6 +92,24 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li class="list-group-item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                Artists:
+                                            </div><br>
+                                            <div th:each="artist, iterStat : *{artists}">
+                                                <!-- Add a span tag for each artist with a comma (except for the last one) -->
+                                                <span th:text="${artist.artistName}"></span>
+                                                <span th:text="|, |"th:if="${!iterStat.last}"></span>
+                                            </div>
+                                            <label for="partyArtists"></label>
+                                            <select multiple id="partyArtists" th:field="*{artists}" th:errorclass="fieldError">
+                                                <option th:each="artist: ${artists}" th:value="${artist.id}" th:text="${artist.artistName}"  th:selected="*{artists}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <input type="submit" value="SAVE" class="buttonLook filterButton">
