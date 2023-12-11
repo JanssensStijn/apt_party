@@ -16,6 +16,8 @@
 <body>
 <div th:replace="~{fragments/header :: header}">Header</div>
 <h1 th:if="${loginName != null}" th:text="|Welcome ${loginName}|"></h1>
+<a th:href="@{/login}" th:if="${loginName == null}">Login</a>
+<a th:href="@{/logout}" th:if="${loginName != null}">Logout</a>
 <div class="text-center">
     <img  th:src="@{/img/party.jpg}" style=" width: 100%; height: auto; max-width: 800px; max-height: 500px" />
 </div>
