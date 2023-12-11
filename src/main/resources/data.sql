@@ -191,3 +191,12 @@ INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (1, select id from pa
 INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, select id from party where name = 'Liberty 2021');
 INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, select id from party where name = 'Uppercuts');
 INSERT INTO ANIMAL_PARTIES (ANIMALS_ID, PARTIES_ID) VALUES (2, select id from party where name = 'Zoetzuur');
+
+--------------------------------------------------------------------------------------------------------
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('admin', '$2a$10$9MIX8kYPkuB7uE/H5nHF8.KG6.YdjBA/voOnjSZnZDxLXL/2BIerS', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES ('admin', 'ADMIN');
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('marie', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES ('marie', 'USER');
