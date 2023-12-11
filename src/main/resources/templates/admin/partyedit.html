@@ -25,9 +25,10 @@
                     <form th:action="@{|/admin/partyedit/*{id}|}" method="post">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
+                                <div class="error" th:if="${#fields.hasErrors('*')}">ERROR - data is not saved</div>
                                 <h1>
                                     <label for="partyName" >name:</label>
-                                    <input id="partyName" th:field="*{name}" style="width: 250px">
+                                    <input id="partyName" th:field="*{name}" style="width: 250px" th:errorclass="fieldError">
                                 </h1>
                             </div>
                             <ul class="list-group list-group-flush">

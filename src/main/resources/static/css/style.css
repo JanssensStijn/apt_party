@@ -1,98 +1,173 @@
-html{
-    margin: 20px;
-    font-family: "Arial Black";
+.activeFilter {
+    background-color: red;
 }
-nav{
-    content-align: center;
-    margin-bottom: 20px;
-}
-.navbar{
-    padding-left: 20px;
-}
-.navbar-brand{
-    font-size: xxx-large;
-}
-.nav-link{
-    font-size: x-large;
-}
-.nav-item{
-    margin: 5px 10px;
-    padding: 5px 10px;
-    border: 1px;
-    border-color: grey;
-    border-style: solid;
-    border-radius: 10px;
-}
-.footer{
+
+.allFilters {
+    background-color: darkgrey;
+    padding-bottom: 10px;
+    padding-top: 5px;
     text-align: center;
+    color: black;
+}
+
+.artistName {
+    padding: 5px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.card-img-top {
+    height: 150px;
+}
+
+
+.error {
+    color: red;
+    font-size: larger;
+}
+
+.errorPage{
+    color: black;
+    text-align: center;
+}
+
+.fieldError, input.fieldError{
+    border: red 3px solid;
+}
+
+
+
+.filterButton {
+    width: 100%;
+}
+
+.footer {
     background-color: slategrey;
     color: black;
     margin-top: 20px;
-}
-.error{
     text-align: center;
-    color: black;
 }
 
-.card{
-    margin-top: 20px;
-}
-
-.card-img-top{
-    height:150px;
-}
-
-.activeFilter{
-    background-color: red;
-}
-.notActiveFilter{
-    background-color: #007bff;
-}
-.hidden{
+.hidden {
     visibility: hidden;
 }
 
-.itemDisplay, .allFilters
-{
-    margin-top: 10px;
-    background-color: darkgrey;
-    text-align: center;
-    color: black;
-}
-.allFilters{
-    padding-bottom: 10px;
-    padding-top: 5px;
+.html {
+    font-family: "Arial Black";
+    margin: 20px;
 }
 
-.itemLink:hover{
-    text-decoration: none;
+.itemDisplay,
+.allFilters {
+    background-color: darkgrey;
+    color: black;
+    margin-top: 10px;
+    text-align: center;
 }
+
 .itemDisplay:hover {
     background-color: #007bff;
 }
-.artistName{
-    padding: 5px;
+
+.itemLink:hover {
+    text-decoration: none;
 }
-.venueName, .artistName
-{
-    font-size: large;
-    font-weight: bold;
+
+.nav-item {
+    border: 1px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
+
+.nav-link {
+    font-size: x-large;
+}
+
+.navbar {
+    padding-left: 20px;
+}
+
+.navbar-brand {
+    font-size: xxx-large;
+}
+
+.nav-item {
+    border: 1px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
+
+.nav-link {
+    font-size: x-large;
+}
+
+.navbar {
+    padding-left: 20px;
+}
+
+.navbar-brand {
+    font-size: xxx-large;
+}
+
+.nav-item {
+    border: 1px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
+
+.nav-link {
+    font-size: x-large;
+}
+
+.navbar {
+    padding-left: 20px;
+}
+
+.navbar-brand {
+    font-size: xxx-large;
+}
+
+.nav-item {
+    border: 1px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
+
+.notActiveFilter {
+    background-color: #007bff;
+}
+
+.venueCapacity {
     color: black;
-}
-.venueCapacity
-{
     font-size: medium;
-    color: black;
     font-weight: normal;
 }
 
-.venueName p{
-    margin: 10px 0px 0px 0px;
-}
-.venueCapacity p{
+.venueCapacity p {
     margin: 5px 0px 10px 0px;
 }
 
-.filterButton{
- width: 100%;
+.venueName,
+.artistName {
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+
+.venueName p {
+    margin: 10px 0px 0px 0px;
 }
