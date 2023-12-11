@@ -2,6 +2,7 @@ package be.thomasmore.party.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Collection;
@@ -17,16 +18,17 @@ public class Party {
     private Integer pricePresaleInEur;
     private Integer priceInEur;
     private String extraInfo;
-
+    @NotNull
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
+    @NotNull
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
     private Date doors;
 
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.LAZY, optional = false)
     private Venue venue;
 
     @ManyToMany (fetch = FetchType.LAZY)
