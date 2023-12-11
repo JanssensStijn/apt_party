@@ -4,18 +4,18 @@ import be.thomasmore.party.model.Party;
 import be.thomasmore.party.model.Venue;
 import be.thomasmore.party.repositories.PartyRepository;
 import be.thomasmore.party.repositories.VenueRepository;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import javax.naming.Binding;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Controller
 @RequestMapping("/admin")
@@ -44,8 +44,15 @@ public class PartyAdminController {
     }
 
     @PostMapping("/partyedit/{id}")
-    public String partyEditPost(@PathVariable int id, Party party){
+    public String partyEditPost(Model model,
+                                @PathVariable int id,
+                                @Valid Party party,
+                                BindingResult bindingResult ){
         //logger.info("findParty " + id + " -- new name=" + party.getName());
+        if(bindingResult.hasErrors()){
+            model.addAttribute("venues", venueRepository.findAll());
+            return "admin/partyedit";
+        }
         partyRepository.save(party);
         return "redirect:/partydetails/" + id;
     }

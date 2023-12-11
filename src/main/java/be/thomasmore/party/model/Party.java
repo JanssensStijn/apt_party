@@ -1,6 +1,7 @@
 package be.thomasmore.party.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Collection;
@@ -11,6 +12,7 @@ public class Party {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
+    @NotBlank
     private String name;
     private Integer pricePresaleInEur;
     private Integer priceInEur;
