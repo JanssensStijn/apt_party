@@ -48,10 +48,11 @@ public class SecurityConfiguration {
 
         http.formLogin(Customizer.withDefaults());
 
-        //to enable h2-console if it doesn't work
         http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()));
         http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
         return http.build();
     }
+
+
 }

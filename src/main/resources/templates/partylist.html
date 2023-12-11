@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venuelist</title>
+    <title>Partylist</title>
     <!-- css en js file inladen voor bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -38,7 +40,7 @@
             </div>
         </div>
         <div class="col-md-2 justify-content-end">
-            <a th:href="@{|/admin/partynew|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">NEW</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{|/admin/partynew|}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">NEW</a>
         </div>
     </div>
 </div>

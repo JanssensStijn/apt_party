@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -17,14 +19,15 @@
 <div th:replace="~{fragments/header :: header}">Header</div>
 <div class="container-lg text-center">
     <div class="row">
-        <div class="col-md-6 justify-content-start">
+        <div class="col-md-4 justify-content-start">
             <a th:href="@{|/partydetails/${prevId}|}" th:classappend="${prevId == null} ? 'hidden'"
                class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true"><<<</a>
         </div>
-        <div class="col-md-6 justify-content-end">
-            <a th:href="@{|/admin/partyedit/${party.id}|}"
+        <div class="col-md-4 justify-content-center">
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{|/admin/partyedit/${party.id}|}"
                class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">EDIT</a>
-
+        </div>
+        <div class="col-md-4 justify-content-end">
             <a th:href="@{|/partydetails/${nextId}|}" th:classappend="${nextId == null} ? 'hidden'"
                class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">>>></a>
         </div>
@@ -134,6 +137,10 @@
                                         </a>
                                     </div>
                                 </div>
+                            </li>
+                            <li class="list-group-item" sec:authorize="hasAuthority('ADMIN')">
+                                <a th:href="@{|/admin/partyedit/${party.id}|}"
+                                   class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">GOING/NOT GOING</a>
                             </li>
                         </ul>
                     </div>

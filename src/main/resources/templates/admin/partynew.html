@@ -62,11 +62,7 @@
                                 <li class="list-group-item">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                Extra info:
-                                            </div>
-
-                                            <label for="partyExtraInfo" >presale price:</label>
+                                            <label for="partyExtraInfo" >Extra info:</label>
                                             <textarea id="partyExtraInfo" th:field="*{extraInfo}" style="width: 250px"></textarea>
                                         </div>
                                     </div>
@@ -74,10 +70,7 @@
                                 <li class="list-group-item">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                Doors:
-                                            </div>
-                                            <label for="partyDoors" >date <i>(HH:mm)</i>:</label>
+                                            <label for="partyDoors" >Doors: date <i>(HH:mm)</i>:</label>
                                             <input id="partyDoors" th:field="*{doors}" style="width: 250px" th:errorclass="fieldError"><br>
                                         </div>
                                     </div>
@@ -85,15 +78,13 @@
                                 <li class="list-group-item">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                Artists:
-                                            </div><br>
+                                            <label for="partyArtists">Artists: </label>
                                             <div th:each="artist, iterStat : *{artists}">
                                                 <!-- Add a span tag for each artist with a comma (except for the last one) -->
                                                 <span th:text="${artist.artistName}"></span>
                                                 <span th:text="|, |"th:if="${!iterStat.last}"></span>
                                             </div>
-                                            <label for="partyArtists"></label>
+
                                             <select multiple id="partyArtists" th:field="*{artists}" th:errorclass="fieldError">
                                                 <option th:each="artist: ${artists}" th:value="${artist.id}" th:text="${artist.artistName}"  th:selected="*{artists}"></option>
                                             </select>
