@@ -80,7 +80,6 @@
                                         <div class="row">
                                             <label for="partyArtists">Artists: </label>
                                             <div th:each="artist, iterStat : *{artists}">
-                                                <!-- Add a span tag for each artist with a comma (except for the last one) -->
                                                 <span th:text="${artist.artistName}"></span>
                                                 <span th:text="|, |"th:if="${!iterStat.last}"></span>
                                             </div>

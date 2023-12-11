@@ -46,7 +46,10 @@ public class SecurityConfiguration {
                 .anyRequest().permitAll()
         );
 
-        http.formLogin(Customizer.withDefaults());
+        http.formLogin(form -> form
+                .loginPage("/user/login")
+                .permitAll()
+        );
 
         http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()));
         http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
