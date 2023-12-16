@@ -17,4 +17,6 @@ public interface AnimalRepository extends CrudRepository<Animal, Integer> {
 
     Iterable<Animal> findByNameContainsIgnoreCase(String keyword);
     List<Animal> findAllByNameContainsIgnoreCase(String keyword);
+
+    Animal findByUsername(String name);
 }
