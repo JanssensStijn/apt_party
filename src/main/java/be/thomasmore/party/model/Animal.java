@@ -3,6 +3,7 @@ package be.thomasmore.party.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 
 import java.util.Collection;
 
@@ -14,6 +15,8 @@ public class Animal {
     private String name;
     private String city;
     private String bio;
+
+    private String username;
     @ManyToMany
     private Collection<Party> parties;
 
@@ -51,6 +54,10 @@ public class Animal {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public Collection<Party> getParties() {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -16,8 +17,7 @@
 <body>
 <div th:replace="~{fragments/header :: header}">Header</div>
 <h1 th:if="${loginName != null}" th:text="|Welcome ${loginName}|"></h1>
-<a th:href="@{/user/login}" th:if="${loginName == null}">Login</a>
-<a th:href="@{/user/logout}" th:if="${loginName != null}">Logout</a>
+
 <div class="text-center">
     <img  th:src="@{/img/party.jpg}" style=" width: 100%; height: auto; max-width: 800px; max-height: 500px" />
 </div>

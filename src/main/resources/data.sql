@@ -180,8 +180,8 @@ INSERT INTO "PUBLIC"."CLIENT" (ID, NAME, NR_OF_ORDERS, TOTAL_AMOUNT,DISCOUNT_TAK
 
 --------------------------------------------------------------------------------------------------------
 
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO) VALUES (1, 'JAN','Antwerpen', 'feest graag op de parking');
-INSERT INTO ANIMAL (ID, NAME,  CITY, BIO) VALUES (2, 'VOS','Wolfsdonk', 'feest graag in het bos');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME) VALUES (1, ' Dorstige zebra','Antwerpen', 'feest graag op de parking', 'zebra');
+INSERT INTO ANIMAL (ID, NAME,  CITY, BIO, USERNAME) VALUES (2, 'VOS','Wolfsdonk', 'feest graag in het bos', 'vos');
 
 --------------------------------------------------------------------------------------------------------
 
@@ -200,3 +200,10 @@ INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES ('admin', 'ADMIN');
 INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
 VALUES ('marie', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
 INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES ('marie', 'USER');
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('zebra', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES ('zebra', 'USER');
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('vos', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES ('vos', 'USER');
