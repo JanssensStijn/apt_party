@@ -50,6 +50,10 @@ public class SecurityConfiguration {
                 .loginPage("/user/login")
                 .permitAll()
         );
+        http.logout(form -> form
+                .logoutUrl("/user/logout")
+                .logoutSuccessUrl("/")
+        );
 
         http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()));
         http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));

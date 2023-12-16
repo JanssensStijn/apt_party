@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Logout</title>
     <!-- css en js file inladen voor bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,10 +15,8 @@
 </head>
 <body>
     <div th:replace="~{fragments/header :: header}">Header</div>
-    <form th:action="@{/user/login}" method="post">
-        <input id="name" name="username" />
-        <input id="password" name="password" type="password"/>
-        <input type="submit" value="login"/>
+    <form th:action="@{/user/logout}" method="post">
+        <input type="submit" value="logout"/>
         <a href="/partylist">cancel</a>
     </form>
     <div th:replace="~{fragments/footer :: footer}">Footer</div>

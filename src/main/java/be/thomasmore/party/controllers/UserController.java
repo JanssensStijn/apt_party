@@ -15,7 +15,13 @@ import java.util.List;
 public class UserController {
     @GetMapping({"/login"})
     public String login(Model model, Principal principal) {
-        if(principal != null) return "redirect: /partylist";
+        if(principal != null) return "redirect:/partylist";
         return "user/login";
+    }
+
+    @GetMapping({"/logout"})
+    public String logout(Model model, Principal principal) {
+        if(principal == null) return "redirect:/partylist";
+        return "user/logout";
     }
 }
